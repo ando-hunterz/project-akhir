@@ -9,39 +9,48 @@
     padding: 30px;
     font-size: 14px;
 
-    input[type=text],input[type=password] {
+    input[type="text"],
+    input[type="password"] {
       width: 100%;
+    }
+
+    input[type="checkbox"] {
+
+    }
+
+    .ng-invalid {
+      border-left: solid red 4px;
+      transition: all 0.5s;
     }
   }
 
   h2 {
-    margin: 0 0 15px;
+    margin: 2rem 0;
     font-size: 30px;
   }
 
   .form-control,
   .btn {
-    min-height: 38px;
-    border-radius: 2px;
+    min-height: 3rem;
+    border-radius: 5px;
   }
   .btn {
     font-size: 15px;
     font-weight: bold;
-
-    :hover{
-      transition: blue 0.5s;
-    }
+    transition: 2s;
   }
-  .alert{
-    margin: 5px 0 ;
+
+  .btn[disabled] {
+    background-color: grey;
+  }
+
+  .alert {
+    margin: 5px 0;
     transition: all 0.5s;
   }
 }
-
-
 
 input.ng-valid {
   border-left: solid green 4px;
   transition: all 0.5s;
 }
-
