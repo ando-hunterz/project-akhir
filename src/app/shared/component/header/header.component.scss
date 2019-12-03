@@ -1,0 +1,23 @@
+@import '../../../app.component.scss';
+@import url("https://fonts.googleapis.com/css?family=Calistoga");
+
+* {
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+}
+.navbar-trans{
+  background: black;
+}
+.btn {
+  font-size: 15px;
+  height: 3rem;
+  width: 7.5rem;
+
+  :hover{
+    width: 5rem;
+  }
+}
+.navbar {
+  height: 10vh;
+  background-color: $primary;
+}
