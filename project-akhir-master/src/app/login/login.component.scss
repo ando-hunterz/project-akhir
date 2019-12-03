@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+.main-container {
+  position: fixed;
+  left: 20em;
+  top: 7em;
+  bottom: 2em;
+  background-color: grey;
+}
+
+.card {
+  top: 24em;
+  left: 26em;
+  bottom: 14em;
+  position: fixed;
+  border: none;
+
+}
+
+.card_1{
+  top: 26m;
+  left: 20em;
+  bottom: 14em;
+  position: fixed;
+  border: none;
+}
+
+.container {
+  position: fixed;
+  left: 25em;
+  top: 10em;
+  bottom: 2em;
+}
+
+.form-control{
+  width: 50%;
+}
+
+.btn-primary {
+  color:black;
+  border-color: lightgray;
+  background-color: lightgray;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+  color: white;
+  background-color: lightblue;
+}

@@ -1,0 +1,32 @@
+
+
+<div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h2> Login </h2>
+    <!-- Username -->
+    <div class="form-group">
+      <label for="username">
+        Username
+      </label>
+      <input type="text" class="form-control" id="username" formControlName="user_name">
+    </div>
+
+  <!-- Password -->
+    <div class="form-group">
+      <label for="password">
+        Password
+      </label>
+        <input type="password" class="form-control" id="Password" formControlName="password">
+    </div>
+
+    <!-- Remember Me -->
+    <div class="card">
+    <label class="form-check-label" for="remember me">
+        <input type="checkbox" formControlName="remember_me">
+      Remember Me
+    <button class="btn-primary" type="submit" [disabled]="!loginForm.valid"> Submit </button>
+  </label>
+  </div>
+
+    </form>
+  </div>
