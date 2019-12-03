@@ -1,36 +1,48 @@
 <!-- <div class="container">
-  <h1>Login</h1>
-  <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h2 class="text-center">Log In</h2>
     <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" class="form-control" id="username" [(ngModel)]="loginDetail.user_name" name="username" #name="ngModel">
-     </div>
-     <div class="form-group">
-      <label for="password">password</label>
-      <input type="password" class="form-control" id="password" [(ngModel)]="loginDetail.password" name="password" #password="ngModel">
-     </div>
-     <div class="form-group">
-       <label for="rememberMe">Remember Me</label>
-       <input type="checkbox" class="form-control" id="checkbox" [(ngModel)]="loginDetail.remember_me" name="rememberMe" #rememberMe="ngModel">
-     </div>
-     <button type="submit" class="btn btn-success">Submit</button>
+      <label>
+        username:
+        <input type="text" class="form-control" formControlName="user_name" placeholder="Username" />
+      </label>
+      <small class="form-text text-muted" *ngIf="user_name.invalid">Required</small>
+    </div>
+    <div class="form-group">
+      <label>
+        password:
+        <input type="password" class="form-control" formControlName="password" placeholder="Password" />
+      </label>
+    </div>
+    <div class="clearfix">
+      <label class="pull-left checkbox-inline"><input type="checkbox" class="form-check-input"
+          formControlName="remember_me" />
+        Remember Me
+      </label>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary btn-block" [disabled]="!loginForm.valid">Submit</button>
+    </div>
   </form>
-</div> -->
+</div>
+-->
 
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-
-  <label>
-    username:
-    <input type="text" formControlName="user_name">
-  </label>
-
-  <label>
-    password:
-    <input type="password" formControlName="password">
-  </label>
-  <label>
-    Remember Me
-  </label>
-  <input type="checkbox" formControlName="remember_me">
-  <button type="submit" [disabled]="!loginForm.valid">Submit</button>
-</form>
+<div class="login-form">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h2 class="text-center">Log in</h2>
+        <div class="form-group">
+            <input type="text" class="form-control" formControlName="user_name" placeholder="Username">
+            <div class="alert alert-danger" *ngIf="user_name.invalid && user_name.dirty" @myInsertRemoveTrigger>Username Must Be filled</div>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" formControlName="password" placeholder="Password">
+            <div class="alert alert-danger" *ngIf="password.invalid && password.dirty" @myInsertRemoveTrigger>Password Must Be filled</div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="!loginForm.valid">Log in</button>
+        </div>
+        <div class="clearfix">
+            <label class="pull-left checkbox-inline"><input type="checkbox" formControlName="remember_me"> Remember me</label>
+        </div>
+    </form>
+</div>

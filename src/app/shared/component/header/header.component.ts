@@ -9,13 +9,13 @@ import { Router } from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
   private xtoken: string;
-  private logStat: boolean = null;
+  public logStat: boolean = null;
 
   constructor(
     private mahasiswaApi: MahasiswaApiService,
     private route: Router
   ) {
-    this.mahasiswaApi.getCurrentToken();
+    this.logStat = false;
     this.mahasiswaApi.currentToken.subscribe(value => {
       console.log(value);
       if (value == null) {
@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
         this.logStat = true;
       }
     },
-    err => {console.log(err);});
+    err => {console.log(err); });
   }
 
   ngOnInit() {
