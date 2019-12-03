@@ -8,12 +8,9 @@ import { xToken } from '../shared/model/loginDetails';
 })
 export class HomeComponent implements OnInit {
 
-  public xtoken: xToken = null;
-
   constructor() { }
 
   ngOnInit() {
-    console.log(this.xtoken);
   }
 
 }

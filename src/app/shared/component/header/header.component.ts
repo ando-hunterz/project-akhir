@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
     private mahasiswaApi: MahasiswaApiService,
     private route: Router
   ) {
+    this.logStat = false;
     this.mahasiswaApi.currentToken.subscribe(value => {
       console.log(value);
       if (value == null) {

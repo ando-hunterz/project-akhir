@@ -1,9 +1,25 @@
-.btn {
-  height: 10rem;
-  width: 600px;
-  margin: 100px 10rem;
-  font-size: 60px;
-  border-radius: 20px;
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+
+.container {
+  text-align: center;
+  position: fixed;
+  right: 1em;
+  left: 1em;
+  top: 5em;
+  bottom: 0;
+}
+
+.card {
+  top: 5em;
+  bottom: 0;
+  text-align: center;
+
+}
+
+.col-sm-6{
+  bottom: 0;
+  top: 5em;
 }
 
 
