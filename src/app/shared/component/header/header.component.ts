@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.logStat = false;
   }
 
   onClick() {
@@ -43,6 +43,10 @@ export class HeaderComponent implements OnInit {
         this.route.navigate([""]);
       }
     );
+  }
+
+  logIn(){
+    this.route.navigate(["login"]);
   }
 
   logOut() {
