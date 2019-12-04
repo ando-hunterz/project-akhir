@@ -1,0 +1,48 @@
+<!-- <div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h2 class="text-center">Log In</h2>
+    <div class="form-group">
+      <label>
+        username:
+        <input type="text" class="form-control" formControlName="user_name" placeholder="Username" />
+      </label>
+      <small class="form-text text-muted" *ngIf="user_name.invalid">Required</small>
+    </div>
+    <div class="form-group">
+      <label>
+        password:
+        <input type="password" class="form-control" formControlName="password" placeholder="Password" />
+      </label>
+    </div>
+    <div class="clearfix">
+      <label class="pull-left checkbox-inline"><input type="checkbox" class="form-check-input"
+          formControlName="remember_me" />
+        Remember Me
+      </label>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary btn-block" [disabled]="!loginForm.valid">Submit</button>
+    </div>
+  </form>
+</div>
+-->
+
+<div class="login-form">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h2 class="text-center">Log in</h2>
+        <div class="form-group">
+            <input type="text" class="form-control" formControlName="user_name" placeholder="Username">
+            <div class="alert alert-danger" *ngIf="user_name.invalid && user_name.dirty" @myInsertRemoveTrigger>Username Must Be filled</div>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" formControlName="password" placeholder="Password">
+            <div class="alert alert-danger" *ngIf="password.invalid && password.dirty" @myInsertRemoveTrigger>Password Must Be filled</div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="!loginForm.valid">Log in</button>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input input type="checkbox" formControlName="remember_me" class="custom-control-input" id="rememberMe"><label class="custom-control-label" for="rememberMe">Remember Me</label>
+        </div>
+    </form>
+</div>
