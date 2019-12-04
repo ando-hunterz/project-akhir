@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { MahasiswaApiService } from "../../services/mahasiswa-api.service";
 import { Router } from "@angular/router";
-import { Location } from "@angular/common";
 import { xToken } from '../../model/loginDetails';
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-header",
@@ -15,7 +15,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private mahasiswaApi: MahasiswaApiService,
-    public route: Router
+    public route: Router,
+    private location : Location
   ) {
     this.logStat = false;
     this.mahasiswaApi.currentToken.subscribe(value => {
@@ -60,7 +61,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
-    this.token = null;
+    this.token.token = null;
     this.logStat = false;
     localStorage.removeItem("token");
     this.route.navigate(["login"]);
