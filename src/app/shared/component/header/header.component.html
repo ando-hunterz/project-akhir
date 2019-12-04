@@ -1,16 +1,8 @@
 <nav class="navbar navbar-toogleable-sm navbar-trans">
   <a (click)='onClick()'>Mahasiswa App</a>
-<<<<<<< HEAD
   <div *ngIf="route.url != '/login'">
   <button class="btn btn-primary pull-right" (click)="logOut()" *ngIf="logStat == true">Log Out</button>
   <button class="btn btn-primary pull-right" (click)="logIn()" *ngIf="logStat == false">Log in</button>
   <button class="btn btn-primary pull-right" *ngIf="logStat == false">Register</button>
   </div>
-=======
-  <div class="container">
-  <button class="btn btn-primary pull-right" (click)="logOut()" *ngIf="logStat == true">Log Out</button>
-  <button class="btn btn-primary pull-right" (click)="logOut()" *ngIf="logStat == false">Log in</button>
-  <button class="btn btn-primary pull-right" (click)="register()" *ngIf="logStat == false"> Register </button>
-</div>
->>>>>>> regist
 </nav>
