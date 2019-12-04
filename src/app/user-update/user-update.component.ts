@@ -3,6 +3,7 @@ import { FormBuilder } from "@angular/forms";
 import * as CryptoJS from "crypto-js";
 import { MahasiswaApiService } from "../shared/services/mahasiswa-api.service";
 import { uData, xToken, authTkn } from '../shared/model/loginDetails';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-user-update",
@@ -25,7 +26,8 @@ export class UserUpdateComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private mahasiswaApi: MahasiswaApiService
+    private mahasiswaApi: MahasiswaApiService,
+    private route: Router
   ) { }
 
   ngOnInit() {
@@ -40,6 +42,10 @@ export class UserUpdateComponent implements OnInit {
       },
       err => {
         console.log(err);
+        this.authTkn = err;
+        localStorage.removeItem('token');
+        alert(this.authTkn.info);
+        this.route.navigate(['login']);
       }
     );
 

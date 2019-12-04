@@ -27,8 +27,6 @@ export class FooterComponent implements OnInit {
     this.logStat = false;
   }
 
-  profileUser(){
-    this.route.navigate(["update"]);
-  }
+
 
 }
