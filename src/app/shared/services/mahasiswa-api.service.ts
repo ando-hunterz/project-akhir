@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Mahasiswa, MahasiswaDetail } from '../model/mahasiswa';
-import { authTkn, xToken } from '../model/loginDetails';
+import { authTkn, xToken, uData } from '../model/loginDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -41,10 +41,10 @@ export class MahasiswaApiService {
     return this.http.post<authTkn>(this.baseUrl + 'register', model);
   }
   postUserUpdate(model: any): Observable<authTkn> {
-    return this.http.post<authTkn>(this.baseUrl + 'update', model);
+    return this.http.put<authTkn>(this.baseUrl + 'update', model);
   }
-  postUserVerify(model: any): Observable<authTkn> {
-    return this.http.post<authTkn>(this.baseUrl + 'verify', model);
+  postUserVerify(model: any): Observable<uData> {
+    return this.http.post<uData>(this.baseUrl + 'verify', model);
   }
 
 

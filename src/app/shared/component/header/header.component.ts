@@ -10,13 +10,13 @@ import { Location } from "@angular/common";
   styleUrls: ["./header.component.scss"]
 })
 export class HeaderComponent implements OnInit {
-  private token: xToken = {token: null};
+  private token: xToken = { token: null };
   public logStat: boolean = null;
 
   constructor(
     private mahasiswaApi: MahasiswaApiService,
     public route: Router,
-    private location : Location
+    private location: Location
   ) {
     this.logStat = false;
     this.mahasiswaApi.currentToken.subscribe(value => {
@@ -37,20 +37,20 @@ export class HeaderComponent implements OnInit {
   onClick() {
     this.token.token = localStorage.getItem('token');
     console.log(this.token);
-    if(this.token.token != null){
-    console.log(this.token);
-    this.mahasiswaApi.postUserVerify(this.token).subscribe(
-      res => {
-        this.route.navigate(["/homepage"]);
-      },
-      err => {
-        console.log(err);
-        this.logStat = false;
-        this.route.navigate([""]);
-      }
-    );
+    if (this.token.token != null) {
+      console.log(this.token);
+      this.mahasiswaApi.postUserVerify(this.token).subscribe(
+        res => {
+          this.route.navigate(["/homepage"]);
+        },
+        err => {
+          console.log(err);
+          this.logStat = false;
+          this.route.navigate([""]);
+        }
+      );
     }
-    else{
+    else {
       this.logStat = false;
       this.route.navigate([""]);
     }
@@ -67,7 +67,20 @@ export class HeaderComponent implements OnInit {
     this.route.navigate(["login"]);
   }
 
+  profileUser() {
+    this.route.navigate(["update"]);
+  }
+
+  registerUser() {
+    this.route.navigate(["register"])
+  }
+
   cancel() {
-    this.location.back();
+    if (this.route.url == '/login') {
+      this.route.navigate(['']);
+    }
+    else {
+      this.location.back();
+    }
   }
 }

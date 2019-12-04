@@ -1,25 +1,26 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-
-  <label>
-    Nama Lengkap
-    <input type="text" formControlName="nama_lengkap">
-  </label>
-
-  <label>
-    alamat
-    <input type="text" formControlName="alamat">
-  </label>
-  <label>
-    Tanggal Lahir
-  </label>
-  <input type="date" formControlName="tanggal_lahir">
-  <label>
-    Foto
-  </label>
-  <input type="text" formControlName="foto">
-  <label>
-    password
-  </label>
-  <input type="password" formControlName="password">
-  <button type="submit" [disabled]="!loginForm.valid">Submit</button>
-</form>
+<div class="update-form">
+  <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+    <h2 class="text-center">Update profile</h2>
+    <div class="form-group">
+      <label for="userName">Nama Lengkap</label>
+      <input type="text" class="form-control" formControlName="nama_lengkap" id="userName" />
+    </div>
+    <div class="form-group">
+      <label for="alamatbaru">alamat</label>
+      <input type="text" class="form-control" formControlName="alamat" id="alamatbaru" />
+    </div>
+    <div class="form-group">
+      <label for="tanggalLahir">Tangal Lahir</label>
+      <input type="date" min="1990-01-01" max="2000-01-01" formControlName="tanggal_lahir" class="form-control" id="tanggalLahir" />
+    </div>
+    <div class="form-group">
+      <label for="fotoBaru">Foto</label>
+      <input type="text" class="form-control" id="fotoBaru" formControlName="foto" />
+    </div>
+    <div class="form-group">
+      <label for="passBaru">password </label>
+      <input type="password" formControlName="password" class="form-control" id="passBaru"/>
+    </div>
+    <button type="submit" class="btn btn-block btn-primary" [disabled]="!updateForm.valid">Submit</button>
+  </form>
+</div>
