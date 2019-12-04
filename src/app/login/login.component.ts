@@ -58,6 +58,8 @@ export class LoginComponent implements OnInit {
     remember_me: [false],
   });
 
+  registerForm = this.fb.group({
+  });
 
   constructor(private mahasiswaApi: MahasiswaApiService, private route: Router, private fb: FormBuilder) { }
 

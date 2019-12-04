@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Component, OnInit } from "@angular/core";
 import { MahasiswaApiService } from "../../services/mahasiswa-api.service";
 import { Router } from "@angular/router";
@@ -19,6 +20,26 @@ export class HeaderComponent implements OnInit {
     private location : Location
   ) {
     this.logStat = false;
+=======
+import { Component, OnInit } from '@angular/core';
+import { MahasiswaApiService } from '../../services/mahasiswa-api.service';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
+})
+export class HeaderComponent implements OnInit {
+  private xtoken: string;
+  private logStat: boolean = null;
+
+  constructor(
+    private mahasiswaApi: MahasiswaApiService,
+    private route: Router
+  ) {
+    this.mahasiswaApi.getCurrentToken();
+>>>>>>> regist
     this.mahasiswaApi.currentToken.subscribe(value => {
       console.log(value);
       if (value == null) {
@@ -27,6 +48,7 @@ export class HeaderComponent implements OnInit {
         this.logStat = true;
       }
     },
+<<<<<<< HEAD
       err => { console.log(err); });
   }
 
@@ -69,5 +91,41 @@ export class HeaderComponent implements OnInit {
 
   cancel() {
     this.location.back();
+=======
+    err => {console.log(err);
+    });
+  }
+
+  ngOnInit() {
+
+  }
+
+  onClick() {
+    console.log(this.xtoken);
+    this.mahasiswaApi.postUserVerify(this.xtoken).subscribe(
+      res => {
+        this.route.navigate(['/homepage']);
+      },
+      err => {
+        alert(err);
+        this.route.navigate(['']);
+      }
+    );
+  }
+
+  logIn() {
+    this.route.navigate(['login']);
+  }
+
+  logOut() {
+    this.xtoken = null;
+    this.logStat = false;
+    localStorage.removeItem('token');
+    this.route.navigate(['login']);
+  }
+
+  register() {
+    this.route.navigate(['register']);
+>>>>>>> regist
   }
 }
