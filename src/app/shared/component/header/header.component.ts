@@ -10,7 +10,7 @@ import { Location } from "@angular/common";
   styleUrls: ["./header.component.scss"]
 })
 export class HeaderComponent implements OnInit {
-  private token: xToken = { token: null };
+  private token: xToken = {token: null};
   public logStat: boolean = null;
 
   constructor(
