@@ -1,0 +1,25 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+  <label>
+    Nama Lengkap
+    <input type="text" formControlName="nama_lengkap">
+  </label>
+
+  <label>
+    alamat
+    <input type="text" formControlName="alamat">
+  </label>
+  <label>
+    Tanggal Lahir
+  </label>
+  <input type="date" formControlName="tanggal_lahir">
+  <label>
+    Foto
+  </label>
+  <input type="text" formControlName="foto">
+  <label>
+    password
+  </label>
+  <input type="password" formControlName="password">
+  <button type="submit" [disabled]="!loginForm.valid">Submit</button>
+</form>
