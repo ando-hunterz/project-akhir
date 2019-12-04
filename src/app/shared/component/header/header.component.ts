@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MahasiswaApiService } from "../../services/mahasiswa-api.service";
 import { Router } from "@angular/router";
+import { xToken } from '../../model/loginDetails';
 
 @Component({
   selector: "app-header",
@@ -8,12 +9,12 @@ import { Router } from "@angular/router";
   styleUrls: ["./header.component.scss"]
 })
 export class HeaderComponent implements OnInit {
-  private xtoken: string;
+  private token: xToken = {token: null};
   public logStat: boolean = null;
 
   constructor(
     private mahasiswaApi: MahasiswaApiService,
-    private route: Router
+    public route: Router
   ) {
     this.logStat = false;
     this.mahasiswaApi.currentToken.subscribe(value => {
@@ -32,8 +33,12 @@ export class HeaderComponent implements OnInit {
   }
 
   onClick() {
-    console.log(this.xtoken);
-    this.mahasiswaApi.postUserVerify(this.xtoken).subscribe(
+    console.log(this.token);
+    this.token.token = localStorage.getItem('token');
+    console.log(this.token);
+    if(this.token.token != null){
+    console.log(this.token);
+    this.mahasiswaApi.postUserVerify(this.token).subscribe(
       res => {
         this.route.navigate(["/homepage"]);
       },
@@ -42,6 +47,10 @@ export class HeaderComponent implements OnInit {
         this.route.navigate([""]);
       }
     );
+    }
+    else{
+      this.route.navigate([""]);
+    }
   }
 
   logIn() {
