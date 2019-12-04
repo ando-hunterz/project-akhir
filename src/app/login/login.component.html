@@ -29,11 +29,7 @@
 
 <div class="login-form">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-<<<<<<< HEAD
-        <h2 class="text-center">Log in</h2>
-=======
         <h2 class="text-center">Student Log In</h2>
->>>>>>> help
         <div class="form-group">
             <input type="text" class="form-control" formControlName="user_name" placeholder="Username">
             <div class="alert alert-danger" *ngIf="user_name.invalid && user_name.dirty" @myInsertRemoveTrigger>Username Must Be filled</div>
@@ -45,13 +41,8 @@
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block" [disabled]="!loginForm.valid">Log in</button>
         </div>
-<<<<<<< HEAD
         <div class="custom-control custom-checkbox">
             <input input type="checkbox" formControlName="remember_me" class="custom-control-input" id="rememberMe"><label class="custom-control-label" for="rememberMe">Remember Me</label>
-=======
-        <div class="clearfix">
-            <label class="pull-left checkbox-inline"><input type="checkbox" formControlName="remember_me"> Remember me</label>
->>>>>>> help
         </div>
     </form>
 </div>
