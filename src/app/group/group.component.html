@@ -1,0 +1,13 @@
+<div class="form-group">
+    <label for="mahasiswa">Nama Mahasiswa</label>
+    <select class="form-control" id="mahasiswa" required [(ngModel)]="mahasiswa" name="mahasiswa" #maha="ngModel">
+      <option *ngFor="let maha of mahasiswa.result.mahasiswa " [value]="maha.nama_lengkap">{{maha.nama_lengkap}}</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="realname">Group</label>
+    <input type="text" class="form-control" id="group" [(ngModel)]="model.realname" name="group">
+</div>
+
+<button class="btn btn-primary pull-right" (click)="cancel()">Back</button>

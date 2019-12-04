@@ -6,10 +6,20 @@ import { MahasiswaDetailComponent } from './mahasiswa-detail/mahasiswa-detail.co
 import { LoginComponent } from './login/login.component';
 import { UserUpdateComponent} from './user-update/user-update.component';
 import { UserVerifyComponent } from './user-verify/user-verify.component';
+<<<<<<< HEAD
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent},
+=======
+import { GroupComponent } from './group/group.component';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent},
+  { path: 'home', component: HomeComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'group', component: GroupComponent},
+>>>>>>> help
   { path: 'homepage/:nim', component: MahasiswaDetailComponent},
   { path: 'homepage', component: MahasiswaListComponent},
   { path: 'update', component: UserUpdateComponent},
