@@ -10,7 +10,7 @@ import { MahasiswaApiService } from '../shared/services/mahasiswa-api.service';
 export class GroupComponent implements OnInit {
 
   public mahasiswa: Mahasiswa = null;
-  
+
   constructor(
     private mahasiswaApi: MahasiswaApiService) { }
 
