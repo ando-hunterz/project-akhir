@@ -33,7 +33,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onClick() {
-    console.log(this.token);
     this.token.token = localStorage.getItem('token');
     console.log(this.token);
     if(this.token.token != null){
@@ -43,12 +42,14 @@ export class HeaderComponent implements OnInit {
         this.route.navigate(["/homepage"]);
       },
       err => {
-        alert(err);
+        console.log(err);
+        this.logStat = false;
         this.route.navigate([""]);
       }
     );
     }
     else{
+      this.logStat = false;
       this.route.navigate([""]);
     }
   }
