@@ -1,14 +1,14 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder } from "@angular/forms";
-import * as CryptoJS from "crypto-js";
-import { MahasiswaApiService } from "../shared/services/mahasiswa-api.service";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import * as CryptoJS from 'crypto-js';
+import { MahasiswaApiService } from '../shared/services/mahasiswa-api.service';
 import { uData, xToken, authTkn } from '../shared/model/loginDetails';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-user-update",
-  templateUrl: "./user-update.component.html",
-  styleUrls: ["./user-update.component.scss"]
+  selector: 'app-user-update',
+  templateUrl: './user-update.component.html',
+  styleUrls: ['./user-update.component.scss']
 })
 export class UserUpdateComponent implements OnInit {
   public xtoken: xToken = {token: null};
@@ -21,7 +21,7 @@ export class UserUpdateComponent implements OnInit {
     tanggal_lahir: [''],
     foto: [''],
     password: [''],
-    token: localStorage.getItem("token")
+    token: localStorage.getItem('token')
   });
 
   constructor(
@@ -36,9 +36,9 @@ export class UserUpdateComponent implements OnInit {
     this.mahasiswaApi.postUserVerify(this.xtoken).subscribe(
       res => {
       this.uData = res;
-        console.log(res);
-        console.log(this.uData.result.user);
-        this.preFilled();
+      console.log(res);
+      console.log(this.uData.result.user);
+      this.preFilled();
       },
       err => {
         console.log(err);
@@ -51,7 +51,7 @@ export class UserUpdateComponent implements OnInit {
 
   }
 
-  preFilled(){
+  preFilled() {
     console.log(this.uData);
     this.updateForm.controls.nama_lengkap.setValue(this.uData.result.user.nama_lengkap);
     this.updateForm.controls.alamat.patchValue(this.uData.result.user.alamat);
@@ -70,7 +70,7 @@ export class UserUpdateComponent implements OnInit {
     }
 
     function delet(obj) {
-      for (var prop in obj) {
+      for (const prop in obj) {
         if (obj[prop] === null || obj[prop] === undefined) {
           delete obj[prop];
         }

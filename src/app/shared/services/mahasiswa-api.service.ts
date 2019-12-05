@@ -25,6 +25,14 @@ export class MahasiswaApiService {
     return this.http.get<Mahasiswa>(this.mahasiswaUrl);
   }
 
+  getAllMahasiswaDataSortByIdDesc(): Observable<Mahasiswa> {
+    return this.http.get<Mahasiswa>(this.mahasiswaUrl + '?sort=id&order=desc');
+  }
+
+  getAllMahasiswaDataSortByIdAsc(): Observable<Mahasiswa> {
+    return this.http.get<Mahasiswa>(this.mahasiswaUrl + '?sort=id&order=asc');
+  }
+
   getMahasiswaDetail(nim: string): Observable<MahasiswaDetail> {
     return this.http.get<MahasiswaDetail>(this.mahasiswaUrl + nim);
   }
