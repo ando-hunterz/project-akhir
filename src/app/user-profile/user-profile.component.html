@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h1 class="text-center">My Profile</h1>
+    </div>
+    <div class="card-body text-center">
+      <h5 class="card-title">
+        {{uData.result.user.user_name}}
+      </h5>
+      <h4 class="card-text">
+          {{uData.result.user.email}}
+      </h4>
+    </div>
+      <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{uData.result.user.nama_lengkap}}</li>
+          <li class="list-group-item">{{uData.result.user.tanggal_lahir}}</li>
+          <li class="list-group-item">{{uData.result.user.telepon}}</li>
+        </ul>
+    </div>
+</div>

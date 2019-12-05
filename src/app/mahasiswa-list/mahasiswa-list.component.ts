@@ -17,12 +17,17 @@ import {
 export class MahasiswaListComponent implements OnInit {
 
   public mahasiswa: Mahasiswa = null;
-  private type: any;
-  private order: any;
+  public xtoken = {
+    token: localStorage.getItem('token')
+  }
   constructor(private mahasiswaApi: MahasiswaApiService) { }
 
 
   ngOnInit() {
+    this.mahasiswaApi.postUserVerify(this.xtoken).subscribe(
+      res => {console.log(res);},
+      err => {console.log(err);}
+    );
     this.mahasiswaApi.getAllMahasiswaData().subscribe(
       result => {
         this.mahasiswa = result;
