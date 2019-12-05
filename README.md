@@ -1,4 +1,4 @@
-#**TOLONG INGET UNTUK INI**
+# **TOLONG INGET UNTUK INI**
 
 Inget untuk install FontAwesome
 
