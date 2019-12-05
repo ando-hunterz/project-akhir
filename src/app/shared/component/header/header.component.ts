@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit {
   }
 
   profileUser() {
-    this.route.navigate(['update']);
+    this.route.navigate(['profile']);
   }
 
   registerUser() {

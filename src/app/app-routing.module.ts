@@ -6,8 +6,8 @@ import { MahasiswaListComponent } from './mahasiswa-list/mahasiswa-list.componen
 import { MahasiswaDetailComponent } from './mahasiswa-detail/mahasiswa-detail.component';
 import { LoginComponent } from './login/login.component';
 import { UserUpdateComponent} from './user-update/user-update.component';
-import { UserVerifyComponent } from './user-verify/user-verify.component';
 import { GroupComponent } from './group/group.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'homepage/:nim', component: MahasiswaDetailComponent},
   { path: 'homepage', component: MahasiswaListComponent},
   { path: 'update', component: UserUpdateComponent},
-  { path: 'verify', component: UserVerifyComponent}
+  { path: 'profile', component:UserProfileComponent}
 ];
 
 @NgModule({

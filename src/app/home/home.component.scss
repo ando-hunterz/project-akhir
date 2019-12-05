@@ -1,26 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 
-.container {
+.container-fluid {
   text-align: center;
-  height: 100vh;
   right: 1em;
   left: 1em;
   top: 5em;
-  bottom: 0;
   margin-top: 7rem;
+  min-height: 100vh;
 }
 
 .card {
-  top: 5em;
-  bottom: 0;
   text-align: center;
+  padding: 4rem;
+  margin: 25vh 0;
 
 }
 
-.col-sm-6{
-  bottom: 0;
-  top: 5em;
-}
 
 
