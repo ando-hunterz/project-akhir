@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { MahasiswaApiService } from "../../services/mahasiswa-api.service";
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { MahasiswaApiService } from '../../services/mahasiswa-api.service';
+import { Router } from '@angular/router';
 import { xToken } from '../../model/loginDetails';
-import { Location } from "@angular/common";
+import { Location } from '@angular/common';
 
 @Component({
-  selector: "app-header",
-  templateUrl: "./header.component.html",
-  styleUrls: ["./header.component.scss"]
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
   private token: xToken = { token: null };
@@ -41,45 +41,44 @@ export class HeaderComponent implements OnInit {
       console.log(this.token);
       this.mahasiswaApi.postUserVerify(this.token).subscribe(
         res => {
-          this.route.navigate(["/homepage"]);
+          this.route.navigate(['/homepage']);
         },
         err => {
           console.log(err);
           this.logStat = false;
-          this.route.navigate([""]);
+          this.route.navigate(['']);
         }
       );
-    }
-    else {
+    } else {
       this.logStat = false;
-      this.route.navigate([""]);
+      this.route.navigate(['']);
     }
   }
 
   logIn() {
-    this.route.navigate(["login"]);
+    this.route.navigate(['login']);
   }
 
   logOut() {
     this.token.token = null;
     this.logStat = false;
-    localStorage.removeItem("token");
-    this.route.navigate(["login"]);
+    localStorage.removeItem('token');
+    this.route.navigate(['login']);
   }
 
   profileUser() {
-    this.route.navigate(["update"]);
+    this.route.navigate(['update']);
   }
 
   registerUser() {
-    this.route.navigate(["register"])
+    this.route.navigate(['register']);
   }
 
   cancel() {
-    if (this.route.url == '/login') {
+    // tslint:disable-next-line: triple-equals
+    if (this.route.url === '/login') {
       this.route.navigate(['']);
-    }
-    else {
+    } else {
       this.location.back();
     }
   }

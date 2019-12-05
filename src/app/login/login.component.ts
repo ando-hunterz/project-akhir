@@ -7,9 +7,6 @@ import * as CryptoJS from 'crypto-js';
 import { transition, trigger, style, animate } from '@angular/animations';
 import * as $ from 'jquery/dist/jquery.min.js';
 
-
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -75,18 +72,17 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  showPass(){
-    console.log("ok");
-    let pass = $("#pass");
-    if(pass.attr("type") == "password"){
-      pass.attr("type","text");
-      $("#visibility").removeClass("fa-eye");
-      $("#visibility").addClass("fa-eye-slash");
-    }
-    else{
-      pass.attr("type","password");
-      $("#visibility").removeClass("fa-eye-slash");
-      $("#visibility").addClass("fa-eye");
+  showPass() {
+    console.log('ok');
+    const pass = $('#pass');
+    if (pass.attr('type') === 'password') {
+      pass.attr('type', 'text');
+      $('#visibility').removeClass('fa-eye');
+      $('#visibility').addClass('fa-eye-slash');
+    } else {
+      pass.attr('type', 'password');
+      $('#visibility').removeClass('fa-eye-slash');
+      $('#visibility').addClass('fa-eye');
     }
   }
   onSubmit() {
@@ -109,6 +105,7 @@ export class LoginComponent implements OnInit {
         alert(error.error.message);
       }
     );
+    this.loginForm.reset();
   }
 
 }

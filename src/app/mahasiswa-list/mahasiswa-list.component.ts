@@ -17,8 +17,9 @@ import {
 export class MahasiswaListComponent implements OnInit {
 
   public mahasiswa: Mahasiswa = null;
-
-  constructor(private mahasiswaApi: MahasiswaApiService) {}
+  private type: any;
+  private order: any;
+  constructor(private mahasiswaApi: MahasiswaApiService) { }
 
 
   ngOnInit() {
@@ -32,4 +33,27 @@ export class MahasiswaListComponent implements OnInit {
       }
     );
   }
+
+  mahaSortIdDesc() {
+      this.mahasiswaApi.getAllMahasiswaDataSortByIdDesc().subscribe(
+        result => {
+          this.mahasiswa = result;
+          console.log(result);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+    mahaSortIdAsc() {
+      this.mahasiswaApi.getAllMahasiswaDataSortByIdAsc().subscribe(
+        result => {
+          this.mahasiswa = result;
+          console.log(result);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
 }

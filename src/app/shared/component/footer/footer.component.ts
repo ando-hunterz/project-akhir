@@ -10,7 +10,7 @@ import { MahasiswaApiService } from '../../services/mahasiswa-api.service';
 export class FooterComponent implements OnInit {
   public logStat: boolean = null;
 
-  constructor(private route: Router,private mahasiswaApi: MahasiswaApiService) {
+  constructor(private route: Router, private mahasiswaApi: MahasiswaApiService) {
     this.logStat = false;
     this.mahasiswaApi.currentToken.subscribe(value => {
       console.log(value);
