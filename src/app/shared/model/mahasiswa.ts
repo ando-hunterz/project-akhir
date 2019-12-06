@@ -8,9 +8,9 @@ export interface Mahasiswa {
 
 export interface MahasiswaDetail {
   info: string;
-  results: {
+  result: {
     alamat: string,
-    angkatan: string,
+    angkatan: number,
     created_at: string,
     email: string,
     foto: string,

@@ -1,5 +1,20 @@
+
 <!-- Footer -->
-<footer class="footer">
-<p>haiii</p>
+<footer class="footer animated slideInUp fixed-bottom" *ngIf="logStat == true">
+  <div class="row">
+    <div class="col-11">
+    </div>
+    <div class="col-1">
+      <div class="btn-group dropup pull-right">
+        <button type="button" class="btn" data-toggle="dropdown">
+          <i class="fas fa-cog"></i>
+        </button>
+        <div class="dropdown-menu">
+            <button type="button" class="btn btn-drop animated fadeIn delay-1s" routerLink="add"><i class="text-center fas fa-plus"></i></button>
+            <button type="button" class="btn btn-drop animated fadeIn" routerLink=""><i class="text-center fas fa-user"></i></button>
+         </div>
+      </div>
+    </div>
+  </div>
 </footer>
 <!-- Footer -->

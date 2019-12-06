@@ -8,16 +8,17 @@ import { LoginComponent } from './login/login.component';
 import { UserUpdateComponent} from './user-update/user-update.component';
 import { GroupComponent } from './group/group.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AddMahasiswaComponent } from './add-mahasiswa/add-mahasiswa.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
-  { path: 'home', component: HomeComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'group', component: GroupComponent},
-  { path: 'homepage/:nim', component: MahasiswaDetailComponent},
-  { path: 'homepage', component: MahasiswaListComponent},
-  { path: 'update', component: UserUpdateComponent},
-  { path: 'profile', component:UserProfileComponent}
+  { path: '', component: HomeComponent,data: {animation: 'home'}},
+  { path: 'login', component: LoginComponent,data: {animation: 'login'}},
+  { path: 'group', component: GroupComponent,},
+  { path: 'homepage/:nim', component: MahasiswaDetailComponent, data: {animation: 'detail'}},
+  { path: 'homepage', component: MahasiswaListComponent,data: {animation: 'homepage'}},
+  { path: 'profile', component: UserProfileComponent,data: {animation: 'profile'}},
+  { path: 'update', component: UserUpdateComponent, data: {animation: 'update'}},
+  { path: 'add', component: AddMahasiswaComponent, data: {animation: 'add'}}
 ];
 
 @NgModule({
