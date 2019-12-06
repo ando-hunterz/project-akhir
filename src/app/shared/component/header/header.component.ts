@@ -98,6 +98,7 @@ export class HeaderComponent implements OnInit {
     this.token.token = null;
     this.logStat = false;
     localStorage.removeItem('token');
+    this.mahasiswaApi.getCurrentToken();
     this.route.navigate(['login']);
   }
 
@@ -110,7 +111,6 @@ export class HeaderComponent implements OnInit {
   }
 
   cancel() {
-    // tslint:disable-next-line: triple-equals
     if (this.route.url === '/login') {
       this.route.navigate(['']);
     } else {

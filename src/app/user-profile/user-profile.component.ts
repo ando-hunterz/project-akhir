@@ -17,6 +17,10 @@ export class UserProfileComponent implements OnInit {
   constructor(private mahasiswaApi: MahasiswaApiService,private route: Router) { }
 
   ngOnInit() {
+    this.mahasiswaApi.viewUser().subscribe(
+      res => {console.log(res);},
+      err => {console.log(err);}
+    );
     this.mahasiswaApi.postUserVerify(this.xtoken).subscribe(
       res => {
         console.log(res);

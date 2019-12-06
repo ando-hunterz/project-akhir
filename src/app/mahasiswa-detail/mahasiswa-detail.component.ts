@@ -79,11 +79,12 @@ export class MahasiswaDetailComponent implements OnInit {
 
   onSubmit(){
     console.log(this.updateMahaForm.value);
-    this.mahasiswaApi.postMahaUpdate(this.updateMahaForm.value, this.nim).subscribe(
+    /*this.mahasiswaApi.postMahaUpdate(this.updateMahaForm.value, this.nim).subscribe(
       res => {console.log(res);
               this.authTkn = res;
               alert(this.authTkn.info)},
       err => {console.log(err);}
     );
+    */
   }
 }

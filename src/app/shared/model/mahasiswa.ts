@@ -10,7 +10,7 @@ export interface MahasiswaDetail {
   info: string;
   result: {
     alamat: string,
-    angkatan: string,
+    angkatan: number,
     created_at: string,
     email: string,
     foto: string,
