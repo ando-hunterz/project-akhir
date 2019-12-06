@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Mahasiswa, MahasiswaDetail } from '../model/mahasiswa';
-import { authTkn, xToken, uData } from '../model/loginDetails';
+import { authTkn, uData } from '../model/loginDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +55,9 @@ export class MahasiswaApiService {
     return this.http.post<uData>(this.baseUrl + 'verify', model);
   }
 
+  postMahaUpdate(model: any, nim: string): Observable<any> {
+    return this.http.put<any>(this.mahasiswaUrl + nim, model);
+  }
 
 
 }

@@ -5,7 +5,10 @@ import { MahasiswaApiService } from '../../services/mahasiswa-api.service';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  styleUrls: ['./footer.component.scss'],
+  animations: [
+
+  ]
 })
 export class FooterComponent implements OnInit {
   public logStat: boolean = null;

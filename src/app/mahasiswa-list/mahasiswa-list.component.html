@@ -2,19 +2,19 @@
     <div class="row  no-gutters">
       <div class="col-lg-3 my-3 mx-auto">
         <div class="dropdown">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+            <button class="btn btn-outline-secondary btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
               Sort Mahasiswa
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-menu btn-block" aria-labelledby="dropdownMenuButton">
                 <button class="btn btn-primary btn-block dropdown-item" (click)="mahaSortIdDesc()">ID Descending</button>
                 <button class="btn btn-primary btn-block dropdown-item" (click)="mahaSortIdAsc()">ID Ascending</button>
             </div>
           </div>
         </div>
     </div>
-    <div class="row no-gutters">
-      <div class="col-lg" *ngFor="let maha of mahasiswa.result.mahasiswa">
-        <div class="my-3 mx-auto card text-center">
+    <div class="row no-gutters" >
+      <div class="col-lg animated slideInUp" *ngFor="let maha of mahasiswa.result.mahasiswa">
+        <div class="my-3 mx-auto card text-center" >
             <div class="card-header">
             <h5 class="card-title mt-4" >{{ maha.nama_lengkap }}</h5>
             </div>

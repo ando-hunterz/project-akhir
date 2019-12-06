@@ -8,7 +8,7 @@ export interface Mahasiswa {
 
 export interface MahasiswaDetail {
   info: string;
-  results: {
+  result: {
     alamat: string,
     angkatan: string,
     created_at: string,
