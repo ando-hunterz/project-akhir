@@ -21,12 +21,23 @@ export class FooterComponent implements OnInit {
     public route: Router,
   ) {
     $(document).ready(function(){
-      $('.dropdown-submenu').on("click", function(e){
-        $(this).next('btn').toggle();
-        e.stopPropagation();
-        e.preventDefault();
-      });
+      console.log($('.btn-drop'));
+      $(".btn-drop").hover(function() {
+        console.log("worked!");
+        $(this).children('p').addClass("drop-text-display animated fadeIn");
+        $(this).children("p").removeClass("drop-text-none");
+    }, function() {
+      console.log("this out")
+      $(this).children('p').addClass("drop-text-none");
+      $(this).children("p").removeClass("drop-text-display animated fadeIn");
     });
+    $("#aboutUs").hover(function() {
+      $(this).css({"width": "130px","transform": "translateX(-100px)"});
+    },
+    function(){
+      $(this).css({"width": "","transform": ""});
+    })
+  });
     this.logStat = false;
     this.mahasiswaApi.currentToken.subscribe(value => {
       console.log(value);
