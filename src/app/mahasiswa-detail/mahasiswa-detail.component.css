@@ -1,0 +1,26 @@
+.bg-foto-ukm{
+  width: 250px;
+  height: 250px;
+  background-color: white;
+  border-radius: 30px;
+  position: absolute;
+}
+
+.bg-foto-ukm img{
+  margin-top: 60px;
+  margin-left: 50px;
+}
+
+.bg-detail-ukm{
+  position: absolute;
+  background-color: #36393E;
+  height: 250px;
+  width: 550px;
+  border-radius: 30px;
+  z-index: -1;
+}
+
+.detail-ukm{
+  padding-left: 280px;
+}
+

@@ -1,0 +1,19 @@
+<h2 class="text-center text-dark">Grup A</h2>
+<table class="table table-hover table-striped">
+      <thead>
+            <tr>
+                  <th scope="col">Boss Kelompok</th>
+                  <th scope="col">Tipe</th>
+                  <th scope="col">NIM</th>
+                  <th scope="col">Hapus Kntl</th>
+            </tr>
+      </thead>
+      <tbody>
+            <tr *ngFor="let favorites of group?.result">
+                  <td>{{ favorites?.user_name }}</td>
+                  <td>{{ favorites?.type }}</td>
+                  <td>{{ favorites?.id_kode_nim_isbn_favorited }}</td>
+                  <td><button (click)="delFav(favorites?.id_kode_nim_isbn_favorited)">Delete Favorite</button></td>
+            </tr>
+      </tbody>
+</table>
