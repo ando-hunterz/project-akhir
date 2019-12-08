@@ -30,6 +30,7 @@ export class AddMahasiswaComponent implements OnInit {
   }
 
   onSubmit(){
+    console.log(this.addForm.value);
     this.mahasiswaApi.addMahasiswa(this.addForm.value).subscribe(
       res => {console.log(res);
               this.mahasiswaDetail = res;
