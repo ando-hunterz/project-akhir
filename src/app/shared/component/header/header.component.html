@@ -1,16 +1,11 @@
 <nav class="navbar navbar-toogleable-sm navbar-trans">
-  <a (click)='onClick()'>Mahasiswa App</a>
-<<<<<<< HEAD
+  <a class="back pull-left" *ngIf="logStat == false || route.url != '/homepage' || route.url != '/'" (click)="cancel()"><i class="fas fa-2x fa-arrow-left"></i></a>
+  <a class="text-center" (click)='onClick()'>Mahasiswa App</a>
   <div *ngIf="route.url != '/login'">
-  <button class="btn btn-primary pull-right" (click)="logOut()" *ngIf="logStat == true">Log Out</button>
-  <button class="btn btn-primary pull-right" (click)="logIn()" *ngIf="logStat == false">Log in</button>
-  <button class="btn btn-primary pull-right" *ngIf="logStat == false">Register</button>
+    <button class="btn pull-right btn-outline-primary" (click)="logOut()" *ngIf="logStat == true">Log Out</button>
+    <button class="btn pull-right btn-outline-primary" (click)="logIn()" *ngIf="logStat == false">Log in</button>
+    <button class="btn pull-right btn-outline-primary" (click)="profileUser()" *ngIf="logStat == true">Profile</button>
+    <button class="btn pull-right btn-outline-primary" (click)="registerUser()" *ngIf="logStat == false">Register</button>
   </div>
-=======
-  <div class="container">
-  <button class="btn btn-primary pull-right" (click)="logOut()" *ngIf="logStat == true">Log Out</button>
-  <button class="btn btn-primary pull-right" (click)="logOut()" *ngIf="logStat == false">Log in</button>
-  <button class="btn btn-primary pull-right" (click)="register()" *ngIf="logStat == false"> Register </button>
-</div>
->>>>>>> regist
+  <button class="btn btn-outline-primary pull-right" (click)="registerUser()" *ngIf="logStat == false && route.url == '/login'">Register</button>
 </nav>

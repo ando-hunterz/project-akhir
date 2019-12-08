@@ -1,29 +1,8 @@
-<<<<<<< HEAD
-import { Component, OnInit } from "@angular/core";
-import { MahasiswaApiService } from "../../services/mahasiswa-api.service";
-import { Router } from "@angular/router";
-import { xToken } from '../../model/loginDetails';
-import { Location } from "@angular/common";
-
-@Component({
-  selector: "app-header",
-  templateUrl: "./header.component.html",
-  styleUrls: ["./header.component.scss"]
-})
-export class HeaderComponent implements OnInit {
-  private token: xToken = {token: null};
-  public logStat: boolean = null;
-
-  constructor(
-    private mahasiswaApi: MahasiswaApiService,
-    public route: Router,
-    private location : Location
-  ) {
-    this.logStat = false;
-=======
 import { Component, OnInit } from '@angular/core';
 import { MahasiswaApiService } from '../../services/mahasiswa-api.service';
 import { Router } from '@angular/router';
+import { xToken } from '../../model/loginDetails';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -31,15 +10,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  private xtoken: string;
-  private logStat: boolean = null;
+  private token: xToken = { token: null };
+  public logStat: boolean = null;
 
   constructor(
     private mahasiswaApi: MahasiswaApiService,
-    private route: Router
+    public route: Router,
+    private location: Location
   ) {
-    this.mahasiswaApi.getCurrentToken();
->>>>>>> regist
+    this.logStat = false;
     this.mahasiswaApi.currentToken.subscribe(value => {
       console.log(value);
       if (value == null) {
@@ -48,7 +27,6 @@ export class HeaderComponent implements OnInit {
         this.logStat = true;
       }
     },
-<<<<<<< HEAD
       err => { console.log(err); });
   }
 
@@ -59,73 +37,49 @@ export class HeaderComponent implements OnInit {
   onClick() {
     this.token.token = localStorage.getItem('token');
     console.log(this.token);
-    if(this.token.token != null){
-    console.log(this.token);
-    this.mahasiswaApi.postUserVerify(this.token).subscribe(
-      res => {
-        this.route.navigate(["/homepage"]);
-      },
-      err => {
-        console.log(err);
-        this.logStat = false;
-        this.route.navigate([""]);
-      }
-    );
-    }
-    else{
+    if (this.token.token != null) {
+      console.log(this.token);
+      this.mahasiswaApi.postUserVerify(this.token).subscribe(
+        res => {
+          this.route.navigate(['/homepage']);
+        },
+        err => {
+          console.log(err);
+          this.logStat = false;
+          this.route.navigate(['']);
+        }
+      );
+    } else {
       this.logStat = false;
-      this.route.navigate([""]);
+      this.route.navigate(['']);
     }
   }
 
   logIn() {
-    this.route.navigate(["login"]);
+    this.route.navigate(['login']);
   }
 
   logOut() {
     this.token.token = null;
     this.logStat = false;
-    localStorage.removeItem("token");
-    this.route.navigate(["login"]);
-  }
-
-  cancel() {
-    this.location.back();
-=======
-    err => {console.log(err);
-    });
-  }
-
-  ngOnInit() {
-
-  }
-
-  onClick() {
-    console.log(this.xtoken);
-    this.mahasiswaApi.postUserVerify(this.xtoken).subscribe(
-      res => {
-        this.route.navigate(['/homepage']);
-      },
-      err => {
-        alert(err);
-        this.route.navigate(['']);
-      }
-    );
-  }
-
-  logIn() {
-    this.route.navigate(['login']);
-  }
-
-  logOut() {
-    this.xtoken = null;
-    this.logStat = false;
     localStorage.removeItem('token');
     this.route.navigate(['login']);
   }
 
-  register() {
+  profileUser() {
+    this.route.navigate(['update']);
+  }
+
+  registerUser() {
     this.route.navigate(['register']);
->>>>>>> regist
+  }
+
+  cancel() {
+    // tslint:disable-next-line: triple-equals
+    if (this.route.url === '/login') {
+      this.route.navigate(['']);
+    } else {
+      this.location.back();
+    }
   }
 }

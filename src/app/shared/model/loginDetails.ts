@@ -15,3 +15,25 @@ export interface authTkn {
 export interface xToken {
   token: string;
 }
+
+export interface uData {
+  info: string;
+  result: {
+    aud: string;
+    exp: any;
+    iat: any;
+    iss: string;
+    user: {
+      alamat: string;
+      created_at: any;
+      email: string;
+      foto: string;
+      id: string;
+      nama_lengkap: string;
+      tanggal_lahir: string;
+      telepon: string;
+      updated_at: any;
+      user_name: any;
+    }
+  }
+}

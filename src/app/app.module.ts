@@ -19,6 +19,7 @@ import { UserVerifyComponent } from './user-verify/user-verify.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GroupComponent } from './group/group.component';
 
+
 export function tokenGetter() {
   return localStorage.getItem('token');
 }

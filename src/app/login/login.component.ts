@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import * as CryptoJS from 'crypto-js';
 import { transition, trigger, style, animate } from '@angular/animations';
-
+import * as $ from 'jquery/dist/jquery.min.js';
 
 @Component({
   selector: 'app-login',
@@ -72,6 +72,19 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  showPass() {
+    console.log('ok');
+    const pass = $('#pass');
+    if (pass.attr('type') === 'password') {
+      pass.attr('type', 'text');
+      $('#visibility').removeClass('fa-eye');
+      $('#visibility').addClass('fa-eye-slash');
+    } else {
+      pass.attr('type', 'password');
+      $('#visibility').removeClass('fa-eye-slash');
+      $('#visibility').addClass('fa-eye');
+    }
+  }
   onSubmit() {
     this.loginForm.controls.password.patchValue(
       CryptoJS.SHA512(this.loginForm.value.password).toString()
@@ -92,6 +105,7 @@ export class LoginComponent implements OnInit {
         alert(error.error.message);
       }
     );
+    this.loginForm.reset();
   }
 
 }
