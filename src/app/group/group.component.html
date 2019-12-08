@@ -1,29 +1,13 @@
-<div class="container">
-  <div class="card mx-auto" style="width: 18rem;" *ngIf="grouping.ungrouped.length != 0">
-  <form [formGroup]="groupform" (submit)="onSubmit()">
-    <div class="form-group" >
-      <h1 class="text-center ">Grouping Page</h1>
-          <label for="mahasiswa">Nama Mahasiswa</label>
-          <select formControlName="index"  class="form-control" id="mahasiswa" name="nama">
-              <option *ngFor="let maha of grouping.ungrouped;let i = index" [value]="i" >{{maha.nama_lengkap}}</option>
-          </select>
-          <label for="group">Group</label>
-        <input formControlName="group" type="text" class="form-control" placeholder="Group" name="group">
-        <button type="submit" class="btn pull-right btn-outline-primary">Submit</button>
-      </div>
-    <!-- <div class="data">
-      <ul class="list-unstyled">
-        <li *ngFor="let nama of sortedArray; let i = index">
-          <div class="row">
-            <h5>Grup: <strong>{{nama.group}}</strong></h5>
-          </div>
-          <div class="row">
-            <li *ngFor="let nama of sortedArray">{{nama.nama}}</li>
-          </div>
-          <button (click)="onDeleteItem(i)" class="material-icons">delete</button>
-        </li>
-      </ul>
-    </div> -->
-  </form>
+<div class="form-group">
+    <label for="mahasiswa">Nama Mahasiswa</label>
+    <select class="form-control" id="mahasiswa" required [(ngModel)]="mahasiswa" name="mahasiswa" #maha="ngModel">
+      <option *ngFor="let maha of mahasiswa.result.mahasiswa " [value]="maha.nama_lengkap">{{maha.nama_lengkap}}</option>
+    </select>
 </div>
+
+<div class="form-group">
+    <label for="realname">Group</label>
+    <input type="text" class="form-control" id="group" [(ngModel)]="model.realname" name="group">
 </div>
+
+<button class="btn btn-primary pull-right" (click)="cancel()">Back</button>
