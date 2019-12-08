@@ -105,6 +105,8 @@ export class LoginComponent implements OnInit {
         alert(error.error.message);
       }
     );
+
+    localStorage.setItem('user_name',this.loginForm.value.user_name);
     this.loginForm.reset();
   }
 

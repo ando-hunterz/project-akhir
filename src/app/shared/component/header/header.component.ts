@@ -3,11 +3,41 @@ import { MahasiswaApiService } from '../../services/mahasiswa-api.service';
 import { Router } from '@angular/router';
 import { xToken } from '../../model/loginDetails';
 import { Location } from '@angular/common';
+import { transition, style, trigger, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  animations: [
+    trigger('inAndOut',
+    [
+      transition(
+        ':enter',
+        [
+          style({ opacity: 0}),
+          animate('1s ease-in',
+          style({ opacity: 1}))
+        ]
+      ),
+      transition(
+        ':leave',
+        [
+          style({ opacity: 1 }),
+          animate('1s ease-in',
+            style({ opacity: 0 }))
+        ]
+      ),
+      transition(
+        '* => *',
+        [
+          style({ opacity: 1 }),
+          animate('1s ease-in',
+            style({ opacity: 0 }))
+        ]
+      )
+    ]),
+  ]
 })
 export class HeaderComponent implements OnInit {
   private token: xToken = { token: null };
@@ -31,7 +61,12 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.logStat = false;
+    this.token.token = localStorage.getItem('token');
+    if(this.token.token == null){
+    this.logStat = false;}
+    else{
+      this.logStat = true;
+    }
   }
 
   onClick() {
@@ -63,11 +98,12 @@ export class HeaderComponent implements OnInit {
     this.token.token = null;
     this.logStat = false;
     localStorage.removeItem('token');
+    this.mahasiswaApi.getCurrentToken();
     this.route.navigate(['login']);
   }
 
   profileUser() {
-    this.route.navigate(['update']);
+    this.route.navigate(['profile']);
   }
 
   registerUser() {
@@ -75,7 +111,6 @@ export class HeaderComponent implements OnInit {
   }
 
   cancel() {
-    // tslint:disable-next-line: triple-equals
     if (this.route.url === '/login') {
       this.route.navigate(['']);
     } else {

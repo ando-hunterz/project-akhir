@@ -15,11 +15,10 @@ import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { UserUpdateComponent } from './user-update/user-update.component';
-import { UserVerifyComponent } from './user-verify/user-verify.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GroupComponent } from './group/group.component';
-
-
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AddMahasiswaComponent } from './add-mahasiswa/add-mahasiswa.component';
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
@@ -35,8 +34,9 @@ export function tokenGetter() {
     LoginComponent,
     RegisterComponent,
     UserUpdateComponent,
-    UserVerifyComponent,
-    GroupComponent
+    GroupComponent,
+    UserProfileComponent,
+    AddMahasiswaComponent,
   ],
   imports: [
     FormsModule,

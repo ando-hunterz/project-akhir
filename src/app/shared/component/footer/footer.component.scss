@@ -1,4 +1,51 @@
+*{
+  padding: 0px;
+  margin: 0px;
+}
+
 .footer{
-  background-color: lightblue;
-  padding: 1rem;
+  width: 100%;
+  background-color: transparent;
+  height: 3rem;
+
+  .col-1{
+    padding: 0 0 0 2rem ;
+
+  }
+
+
+  .btn{
+    font-size: 20px;
+    background-color: transparent;
+    padding: 3px;
+
+    &:hover{
+    border: 1px solid grey;
+    border-radius: 2px;
+    }
+
+    &:active,&:focus{
+      box-shadow:none !important;
+      outline:0px !important;
+    }
+  }
+}
+
+.dropdown-menu{
+  min-width: 0rem;
+  border: none;
+
+  .btn-drop{
+    padding: 5.5px;
+  }
+
+}
+
+
+  h2{
+    font-size: 5px;
+}
+
+ .btn-drop:hover + .drop-text {
+  display: block;
 }
