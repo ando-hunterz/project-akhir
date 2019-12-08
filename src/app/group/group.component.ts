@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import daftar from '../shared/model/daftar.json';
-import { SlicePipe } from '@angular/common';
-import { splitClasses } from '@angular/compiler';
-
-export interface Group {
-  ungrouped: Array<any>;
-  [key: string]: Array<object>;
-}
+import { Mahasiswa } from '../shared/model/mahasiswa';
+import { MahasiswaApiService } from '../shared/services/mahasiswa-api.service';
 
 @Component({
   selector: 'app-group',
@@ -15,64 +8,22 @@ export interface Group {
   styleUrls: ['./group.component.scss']
 })
 export class GroupComponent implements OnInit {
-  title = 'json-file-read-angular';
-  public daftarMaha = daftar;
 
-  public grouping: Group = {ungrouped: null};
-  public form: FormGroup;
-  groupform = this.fb.group({
-    index: [null, Validators.required],
-    group: [null, Validators.required]
-  });
+  public mahasiswa: Mahasiswa = null;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private mahasiswaApi: MahasiswaApiService) { }
 
   ngOnInit() {
-    this.grouping.ungrouped = this.daftarMaha;
-    console.log(this.daftarMaha);
-    console.log(this.grouping.ungrouped);
+    this.mahasiswaApi.getAllMahasiswaData().subscribe(
+      result => {
+        this.mahasiswa = result;
+        console.log(result);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
-
-  onSubmit(){
-    console.log(this.groupform.value.nama);
-    var index =  this.groupform.value.index;
-    //var index = this.grouping.ungrouped.map(x => x.nama_lengkap).indexOf(this.groupform.value.nama);
-    console.log(index);
-    console.log(this.grouping.ungrouped[index]);
-    console.log(this.grouping.ungrouped);
-    var groupProp = this.groupform.value.group;
-    if(this.grouping.hasOwnProperty(groupProp)){
-      console.log('has properties');
-      this.grouping[groupProp].push(this.grouping.ungrouped[index])
-  }
-  else{
-    this.grouping[groupProp] = [];
-    this.grouping[groupProp].push(this.grouping.ungrouped[index]);
-  }
-    this.grouping.ungrouped.splice(index, 1);
-    console.log(this.grouping);
-  }
-
-  /*
-
-  onDeleteItem(index) {
-    if (confirm("Want to delete it?")) {
-      this.grouping.splice(index, 1);
-    } else {
-      console.log('cancel');
-    }
-  }
-
-  sortedArray() {
-    var groups = this.grouping.reduce(function(obj,item){
-      obj[item.group] = obj[item.group] || [];
-      obj[item.group].push(item.nama);
-      return obj;
-    }, {});
-    var myArray = Object.keys(groups).map(function(key){
-      return {group: key, nama: groups[key]};
-    });
-  }
-*/
 }
