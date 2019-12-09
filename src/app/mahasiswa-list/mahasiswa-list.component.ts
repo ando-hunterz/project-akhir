@@ -11,10 +11,17 @@ import { Router } from '@angular/router';
 })
 export class MahasiswaListComponent implements OnInit {
   public mahasiswa: Mahasiswa = null;
+<<<<<<< HEAD
   public xtoken = {
     token: localStorage.getItem("token")
   };
   constructor(private mahasiswaApi: MahasiswaApiService, private route: Router) {}
+=======
+  private type: any;
+  private order: any;
+  constructor(private mahasiswaApi: MahasiswaApiService) { }
+
+>>>>>>> bd8c4bbdf63d789869657002981b9ded9d5b1bc1
 
   ngOnInit() {
     this.mahasiswaApi.postUserVerify(this.xtoken).subscribe(
@@ -39,6 +46,7 @@ export class MahasiswaListComponent implements OnInit {
   }
 
   mahaSortIdDesc() {
+<<<<<<< HEAD
     this.mahasiswaApi.getAllMahasiswaDataSortByIdDesc().subscribe(
       result => {
         this.mahasiswa = result;
@@ -60,4 +68,27 @@ export class MahasiswaListComponent implements OnInit {
       }
     );
   }
+=======
+      this.mahasiswaApi.getAllMahasiswaDataSortByIdDesc().subscribe(
+        result => {
+          this.mahasiswa = result;
+          console.log(result);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+    mahaSortIdAsc() {
+      this.mahasiswaApi.getAllMahasiswaDataSortByIdAsc().subscribe(
+        result => {
+          this.mahasiswa = result;
+          console.log(result);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+>>>>>>> bd8c4bbdf63d789869657002981b9ded9d5b1bc1
 }

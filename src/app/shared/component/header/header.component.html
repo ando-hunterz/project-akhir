@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <nav class="navbar navbar-toogleable-sm navbar-trans text-center">
   <div class="col-1">
   <a class="back pull-left " [@inAndOut] *ngIf="route.url != '/homepage' && route.url != '/'" (click)="cancel()"><i class="fas fa-2x fa-arrow-left"></i></a>
@@ -16,5 +17,16 @@
   <div class="col-3" *ngIf="logStat == true" >
       <button class="btn btn-outline-primary "  [@inAndOut] (click)="logOut()">Log Out</button>
       <button class="btn btn-outline-primary "  [@inAndOut] (click)="profileUser()">Profile</button>
+=======
+<nav class="navbar navbar-toogleable-sm navbar-trans">
+  <a class="back pull-left" *ngIf="logStat == false || route.url != '/homepage' || route.url != '/' " (click)="cancel()"><i class="fas fa-2x fa-arrow-left"></i></a>
+  <a class="text-center" (click)='onClick()'> Mahasiswa App </a>
+  <div *ngIf="route.url != '/login'">
+    <button class="btn pull-right btn-outline-primary" (click)="logOut()" *ngIf="logStat == true">Log Out</button>
+    <button class="btn pull-right btn-outline-primary" (click)="logIn()" *ngIf="logStat == false">Log in</button>
+    <button class="btn pull-right btn-outline-primary" (click)="profileUser()" *ngIf="logStat == true">Profile</button>
+    <button class="btn pull-right btn-outline-primary" (click)="registerUser()" *ngIf="logStat == false || route.url === 'register'">Register</button>
+>>>>>>> bd8c4bbdf63d789869657002981b9ded9d5b1bc1
   </div>
+  <button class="btn btn-outline-primary pull-right" (click)="registerUser()" *ngIf="logStat == false && route.url == '/login'">Register</button>
 </nav>

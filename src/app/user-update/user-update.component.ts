@@ -20,7 +20,11 @@ export class UserUpdateComponent implements OnInit {
     alamat: [''],
     tanggal_lahir: [''],
     foto: [''],
+<<<<<<< HEAD
     password: [null],
+=======
+    password: [''],
+>>>>>>> bd8c4bbdf63d789869657002981b9ded9d5b1bc1
     token: localStorage.getItem('token')
   });
 
@@ -85,7 +89,10 @@ export class UserUpdateComponent implements OnInit {
       res => {
         console.log(res);
         this.authTkn = res;
+<<<<<<< HEAD
         localStorage.setItem('token',this.authTkn.token);
+=======
+>>>>>>> bd8c4bbdf63d789869657002981b9ded9d5b1bc1
         alert(this.authTkn.info);
       },
       err => {
