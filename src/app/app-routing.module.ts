@@ -8,10 +8,12 @@ import { LoginComponent } from './login/login.component';
 import { UserUpdateComponent} from './user-update/user-update.component';
 import { UserVerifyComponent } from './user-verify/user-verify.component';
 import { GroupComponent } from './group/group.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent},
+  { path: 'register', component: RegisterComponent},
   { path: 'login', component: LoginComponent},
   { path: 'group', component: GroupComponent},
   { path: 'homepage/:nim', component: MahasiswaDetailComponent},
