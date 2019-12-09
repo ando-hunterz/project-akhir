@@ -103,11 +103,8 @@ export class LoginComponent implements OnInit {
         alert(error.error.message);
       }
     );
-<<<<<<< HEAD
 
     localStorage.setItem('user_name',this.loginForm.value.user_name);
-=======
->>>>>>> bd8c4bbdf63d789869657002981b9ded9d5b1bc1
     this.loginForm.reset();
   }
 

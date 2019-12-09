@@ -3,8 +3,6 @@ import { MahasiswaApiService } from './../shared/services/mahasiswa-api.service'
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { first } from 'rxjs/operators';
 import * as CryptoJS from 'crypto-js';
 import { transition, trigger, style, animate } from '@angular/animations';
 
@@ -42,14 +40,13 @@ export class RegisterComponent implements OnInit {
 
   registerForm = this.fb.group({
     user_name: ['', Validators.required],
-    fullname: ['', Validators.required],
+    nama_lengkap: ['', Validators.required],
     telepon: ['', Validators.required],
     email: ['', Validators.required],
     alamat: ['', Validators.required],
-    birthdate: ['', Validators.required],
-    foto_profil: ['', Validators.required],
+    tanggal_lahir: ['', Validators.required],
+    foto: ['', Validators.required],
     password: ['', Validators.required],
-    remember_me: [false],
   });
 
 constructor(
@@ -66,7 +63,7 @@ ngOnInit() {
     return this.registerForm.controls.user_name;
   }
   get fullname() {
-    return this.registerForm.controls.fullname;
+    return this.registerForm.controls.nama_lengkap;
   }
   get telepon() {
     return this.registerForm.controls.telepon;
@@ -80,8 +77,8 @@ ngOnInit() {
   get birthdate() {
     return this.registerForm.controls.birthdate;
   }
-  get foto_profile() {
-    return this.registerForm.controls.foto_profile;
+  get foto() {
+    return this.registerForm.controls.foto;
   }
 
   get password() {

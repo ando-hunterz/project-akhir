@@ -3,15 +3,11 @@ import { MahasiswaApiService } from '../../services/mahasiswa-api.service';
 import { Router } from '@angular/router';
 import { xToken } from '../../model/loginDetails';
 import { Location } from '@angular/common';
-<<<<<<< HEAD
 import { transition, style, trigger, animate } from '@angular/animations';
-=======
->>>>>>> bd8c4bbdf63d789869657002981b9ded9d5b1bc1
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-<<<<<<< HEAD
   styleUrls: ['./header.component.scss'],
   animations: [
     trigger('inAndOut',
@@ -42,9 +38,6 @@ import { transition, style, trigger, animate } from '@angular/animations';
       )
     ]),
   ]
-=======
-  styleUrls: ['./header.component.scss']
->>>>>>> bd8c4bbdf63d789869657002981b9ded9d5b1bc1
 })
 export class HeaderComponent implements OnInit {
   private token: xToken = { token: null };
@@ -105,19 +98,12 @@ export class HeaderComponent implements OnInit {
     this.token.token = null;
     this.logStat = false;
     localStorage.removeItem('token');
-<<<<<<< HEAD
     this.mahasiswaApi.getCurrentToken();
-=======
->>>>>>> bd8c4bbdf63d789869657002981b9ded9d5b1bc1
     this.route.navigate(['login']);
   }
 
   profileUser() {
-<<<<<<< HEAD
     this.route.navigate(['profile']);
-=======
-    this.route.navigate(['update']);
->>>>>>> bd8c4bbdf63d789869657002981b9ded9d5b1bc1
   }
 
   registerUser() {
@@ -125,10 +111,6 @@ export class HeaderComponent implements OnInit {
   }
 
   cancel() {
-<<<<<<< HEAD
-=======
-    // tslint:disable-next-line: triple-equals
->>>>>>> bd8c4bbdf63d789869657002981b9ded9d5b1bc1
     if (this.route.url === '/login') {
       this.route.navigate(['']);
     } else {

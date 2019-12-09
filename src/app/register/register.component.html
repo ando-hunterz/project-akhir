@@ -11,10 +11,15 @@
 
       <!-- Register Nama Lengkap -->
       <div class="form-group">
-        <input type="text" class="form-control" formControlName="fullname" placeholder="fullname">
+        <input type="text" class="form-control" formControlName="nama_lengkap" placeholder="fullname">
         <div class="alert alert-danger" *ngIf="fullname.invalid && fullname.dirty" @myInsertRemoveTrigger> Please fill your complete name here</div>
-    </div>
+      </div>
 
+      <!-- Register Alamat -->
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="alamat" placeholder="alamat">
+        <div class="alert alert-danger" *ngIf="fullname.invalid && fullname.dirty" @myInsertRemoveTrigger> Please fill your complete name here</div>
+      </div>
       <!-- Register Nomor Telepon -->
       <div class="form-group">
         <input type="text" class="form-control" formControlName="telepon" placeholder="telepon">
@@ -22,17 +27,17 @@
 
     <!-- Register Email -->
     <div class="form-group">
-      <input type="email" class="form-control" formControlName="email" placeholder="email">
+      <input type="text" class="form-control" formControlName="email" placeholder="email">
     </div>
 
     <!-- Register Tanggal Lahir -->
     <div class="form-group">
-      <input type="date" class="form-control" formControlName="birthdate" placeholder="birthdate">
+      <input type="date" class="form-control" formControlName="tanggal_lahir" placeholder="birthdate">
     </div>
 
     <!-- Register Foto -->
     <div class="form-group">
-      <input type="text" class="form-control" formControlName="foto_profil" placeholder="link foto-profil">
+      <input type="text" class="form-control" formControlName="foto" placeholder="link foto-profil">
     </div>
 
     <!-- Register Password -->
@@ -45,10 +50,6 @@
     <!-- Button shit -->
       <div class="form-group">
           <button type="submit" class="btn btn-primary btn-block" [disabled]="!registerForm.valid"> Register </button>
-      </div>
-
-      <div class="clearfix">
-          <label class="pull-left checkbox-inline"><input type="checkbox" formControlName="remember_me"> Remember me</label>
       </div>
   </form>
 </div>

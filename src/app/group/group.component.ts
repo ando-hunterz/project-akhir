@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import daftar from '../shared/model/daftar.json';
-import { SlicePipe } from '@angular/common';
-import { splitClasses } from '@angular/compiler';
+
 
 export interface Group {
   ungrouped: Array<any>;
@@ -16,7 +14,6 @@ export interface Group {
 })
 export class GroupComponent implements OnInit {
   title = 'json-file-read-angular';
-  public daftarMaha = daftar;
 
   public grouping: Group = {ungrouped: null};
   public form: FormGroup;
@@ -28,8 +25,6 @@ export class GroupComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.grouping.ungrouped = this.daftarMaha;
-    console.log(this.daftarMaha);
     console.log(this.grouping.ungrouped);
   }
 

@@ -1,14 +1,8 @@
-<<<<<<< HEAD
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { MahasiswaApiService } from "../../services/mahasiswa-api.service";
 import { xToken } from "../../model/loginDetails";
 import * as $ from "jquery/dist/jquery.min.js";
-=======
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { MahasiswaApiService } from '../../services/mahasiswa-api.service';
->>>>>>> bd8c4bbdf63d789869657002981b9ded9d5b1bc1
 
 @Component({
   selector: "app-footer",
@@ -18,7 +12,6 @@ import { MahasiswaApiService } from '../../services/mahasiswa-api.service';
 })
 export class FooterComponent implements OnInit {
   public logStat: boolean = null;
-<<<<<<< HEAD
   private token: xToken = { token: null };
 
   constructor(private mahasiswaApi: MahasiswaApiService, public route: Router) {
@@ -81,26 +74,4 @@ export class FooterComponent implements OnInit {
       this.logStat = true;
     }
   }
-=======
-
-  constructor(private route: Router, private mahasiswaApi: MahasiswaApiService) {
-    this.logStat = false;
-    this.mahasiswaApi.currentToken.subscribe(value => {
-      console.log(value);
-      if (value == null) {
-        this.logStat = false;
-      } else {
-        this.logStat = true;
-      }
-    },
-      err => { console.log(err); });
-   }
-
-  ngOnInit() {
-    this.logStat = false;
-  }
-
-
-
->>>>>>> bd8c4bbdf63d789869657002981b9ded9d5b1bc1
 }
