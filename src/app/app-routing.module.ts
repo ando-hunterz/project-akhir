@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -7,6 +6,7 @@ import { MahasiswaDetailComponent } from './mahasiswa-detail/mahasiswa-detail.co
 import { LoginComponent } from './login/login.component';
 import { UserUpdateComponent} from './user-update/user-update.component';
 import { GroupComponent } from './group/group.component';
+import { RegisterComponent } from './register/register.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AddMahasiswaComponent } from './add-mahasiswa/add-mahasiswa.component';
 
@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'update', component: UserUpdateComponent, data: {animation: 'update'}},
   { path: 'add', component: AddMahasiswaComponent, data: {animation: 'add'}},
   { path: 'group', component: GroupComponent, data: {animation: 'group'}}
+  { path: 'register', component: RegisterComponent},
 ];
 
 @NgModule({

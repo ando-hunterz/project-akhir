@@ -1,7 +1,11 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+<<<<<<< HEAD
 import { Router, NavigationStart, Event, NavigationEnd } from '@angular/router';
 import { MahasiswaApiService } from '../shared/services/mahasiswa-api.service';
+=======
+
+>>>>>>> 1a9cfef233106da81d1009be7ad65af53f684361
 
 export interface Group {
   ungrouped: Array<any>;
@@ -14,6 +18,10 @@ export interface Group {
   styleUrls: ['./group.component.scss']
 })
 export class GroupComponent implements OnInit {
+<<<<<<< HEAD
+=======
+  title = 'json-file-read-angular';
+>>>>>>> 1a9cfef233106da81d1009be7ad65af53f684361
 
   public daftar: any;
 
@@ -37,6 +45,7 @@ export class GroupComponent implements OnInit {
   }
 
   ngOnInit() {
+<<<<<<< HEAD
     this.mahasiswaApi.postUserVerify().subscribe(
       res => {console.log(res);},
       err => {this.router.navigate(['/login']);}
@@ -55,6 +64,8 @@ export class GroupComponent implements OnInit {
     console.log(this.daftarMaha);
     this.grouping = this.daftarMaha;
     console.log(this.daftarMaha);
+=======
+>>>>>>> 1a9cfef233106da81d1009be7ad65af53f684361
     console.log(this.grouping.ungrouped);
   }
 
