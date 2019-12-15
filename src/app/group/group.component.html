@@ -1,29 +1,57 @@
 <div class="container">
-  <div class="card mx-auto" style="width: 18rem;" *ngIf="grouping.ungrouped.length != 0">
-  <form [formGroup]="groupform" (submit)="onSubmit()">
-    <div class="form-group" >
-      <h1 class="text-center ">Grouping Page</h1>
-          <label for="mahasiswa">Nama Mahasiswa</label>
-          <select formControlName="index"  class="form-control" id="mahasiswa" name="nama">
-              <option *ngFor="let maha of grouping.ungrouped;let i = index" [value]="i" >{{maha.nama_lengkap}}</option>
-          </select>
-          <label for="group">Group</label>
-        <input formControlName="group" type="text" class="form-control" placeholder="Group" name="group">
-        <button type="submit" class="btn pull-right btn-outline-primary">Submit</button>
+  <div
+    class="card mx-auto"
+    style="width: 18rem;"
+    *ngIf="grouping.ungrouped.length != 0"
+  >
+    <form [formGroup]="groupform" (submit)="onSubmit()">
+      <div class="form-group">
+        <h1 class="text-center ">Grouping Page</h1>
+        <label for="mahasiswa">Nama Mahasiswa</label>
+        <select
+          formControlName="index"
+          class="form-control"
+          id="mahasiswa"
+          name="nama"
+        >
+          <option
+            *ngFor="let maha of grouping.ungrouped; let i = index;trackBy: trackByFn"
+            [value]="i"
+            >{{maha.nama_lengkap}}</option
+          >
+        </select>
+        <label for="group">Group</label>
+        <input
+          formControlName="group"
+          type="text"
+          class="form-control"
+          placeholder="Group"
+          name="group"
+        />
+        <button type="submit" class="btn pull-right btn-outline-primary">
+          Submit
+        </button>
       </div>
-    <!-- <div class="data">
-      <ul class="list-unstyled">
-        <li *ngFor="let nama of sortedArray; let i = index">
-          <div class="row">
-            <h5>Grup: <strong>{{nama.group}}</strong></h5>
-          </div>
-          <div class="row">
-            <li *ngFor="let nama of sortedArray">{{nama.nama}}</li>
-          </div>
-          <button (click)="onDeleteItem(i)" class="material-icons">delete</button>
-        </li>
-      </ul>
-    </div> -->
-  </form>
-</div>
+    </form>
+  </div>
+
+  <div class="data">
+    <div class="row">
+      <div *ngFor="let nama of groupProperty">
+        <div class="card" *ngIf="grouping[nama] != undefined">
+        <div class="card-header">
+          <h5>
+            Grup: <strong>{{ nama }}</strong>
+          </h5>
+        </div>
+        <div class="card-body">
+          <p *ngFor="let member of grouping[nama], let i = index">
+            {{ member.nama_lengkap }}
+            <button class="btn btn-secondary"   (click)="deleteMahasiswaGroup(nama, i, member.nama_lengkap)">Delete</button>
+          </p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
