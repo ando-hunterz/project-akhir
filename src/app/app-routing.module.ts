@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'profile', component: UserProfileComponent,data: {animation: 'profile'}},
   { path: 'update', component: UserUpdateComponent, data: {animation: 'update'}},
   { path: 'add', component: AddMahasiswaComponent, data: {animation: 'add'}},
-  { path: 'group', component: GroupComponent, data: {animation: 'group'}}
+  { path: 'group', component: GroupComponent, data: {animation: 'group'}},
   { path: 'register', component: RegisterComponent},
 ];
 

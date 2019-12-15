@@ -24,7 +24,8 @@ export class UserProfileComponent implements OnInit {
     this.mahasiswaApi.postUserVerify().subscribe(
       res => { console.log(res);
               },
-      err => {this.route.navigate(['/login']);
+      err => {
+        this.route.navigate(['/login']);
       localStorage.removeItem('token'); }
     );
   }
