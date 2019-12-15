@@ -3,7 +3,6 @@ import { Mahasiswa } from "../shared/model/mahasiswa";
 import { MahasiswaApiService } from "../shared/services/mahasiswa-api.service";
 import { trigger, transition, animate, style, state } from "@angular/animations";
 import { Router } from '@angular/router';
-import { Group } from '../group/group.component';
 
 @Component({
   selector: "app-mahasiswa-list",
@@ -15,35 +14,27 @@ export class MahasiswaListComponent implements OnInit {
   public xtoken = {
     token: localStorage.getItem("token")
   };
-  private grouping: Group = {ungrouped: null};
   constructor(private mahasiswaApi: MahasiswaApiService, private route: Router) {}
 
   ngOnInit() {
+    this.mahasiswaApi.postUserVerify(this.xtoken).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+        this.route.navigate(['/homepage']);
+        localStorage.removeItem('token');
+      }
+    );
     this.mahasiswaApi.getAllMahasiswaData().subscribe(
       result => {
         this.mahasiswa = result;
         console.log(result);
-        let mahajs = localStorage.getItem("MahaJSON");
-        let groupjs = localStorage.getItem("GroupJSON")
-        if(mahajs === "null" && groupjs === "null"){
-          console.log("this.worked!");
-          this.grouping.ungrouped = this.mahasiswa.result.mahasiswa;
-          console.log(this.grouping);
-          let mahaJSON = JSON.stringify(this.grouping);
-          console.log(mahaJSON);
-          localStorage.setItem("MahaJSON",mahaJSON);
-        }
       },
       error => {
         console.log(error);
       }
-    );
-    this.mahasiswaApi.postUserVerify().subscribe(
-      res => { console.log(res);
-              },
-      err => {
-        console.log(err);this.route.navigate(['/login']);
-      localStorage.removeItem('token'); }
     );
   }
 

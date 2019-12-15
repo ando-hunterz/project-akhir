@@ -62,8 +62,32 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.token.token = localStorage.getItem('token');
-    if (this.token.token == null){ this.logStat = false; }
-    else {this.logStat = true;}
+    if(this.token.token == null){
+    this.logStat = false;}
+    else{
+      this.logStat = true;
+    }
+  }
+
+  onClick() {
+    this.token.token = localStorage.getItem('token');
+    console.log(this.token);
+    if (this.token.token != null) {
+      console.log(this.token);
+      this.mahasiswaApi.postUserVerify(this.token).subscribe(
+        res => {
+          this.route.navigate(['/homepage']);
+        },
+        err => {
+          console.log(err);
+          this.logStat = false;
+          this.route.navigate(['']);
+        }
+      );
+    } else {
+      this.logStat = false;
+      this.route.navigate(['']);
+    }
   }
 
   logIn() {
@@ -74,9 +98,6 @@ export class HeaderComponent implements OnInit {
     this.token.token = null;
     this.logStat = false;
     localStorage.removeItem('token');
-    localStorage.removeItem('MahaJSON');
-    localStorage.removeItem('GroupJSON');
-    localStorage.removeItem('user_name');
     this.mahasiswaApi.getCurrentToken();
     this.route.navigate(['login']);
   }
