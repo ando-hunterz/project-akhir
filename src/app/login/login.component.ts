@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
     remember_me: [false],
   });
 
+
   constructor(private mahasiswaApi: MahasiswaApiService, private route: Router, private fb: FormBuilder) { }
 
   get password() {
@@ -95,8 +96,6 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', this.authTkn.token);
         this.mahasiswaApi.getCurrentToken();
         this.route.navigate(['/homepage']);
-        localStorage.setItem("MahaJSON", null);
-        localStorage.setItem("GroupJSON", null);
         alert(this.authTkn.info);
       },
       error => {
@@ -105,7 +104,7 @@ export class LoginComponent implements OnInit {
       }
     );
 
-    localStorage.setItem('user_name', this.loginForm.value.user_name);
+    localStorage.setItem('user_name',this.loginForm.value.user_name);
     this.loginForm.reset();
   }
 

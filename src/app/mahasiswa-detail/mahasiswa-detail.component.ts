@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MahasiswaApiService } from "../shared/services/mahasiswa-api.service";
 import { MahasiswaDetail } from "../shared/model/mahasiswa";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 import { FormBuilder } from '@angular/forms';
 import { authTkn } from '../shared/model/loginDetails';
 import * as $ from 'jquery/dist/jquery.min.js';
@@ -23,6 +23,8 @@ export class MahasiswaDetailComponent implements OnInit {
     alamat: [''],
     tanggal_lahir: [''],
     foto: [''],
+    email: [''],
+    nim: [''],
     prodi: [''],
     telepon: [''],
     token: localStorage.getItem('token')
@@ -32,7 +34,6 @@ export class MahasiswaDetailComponent implements OnInit {
     private mahasiswaApi: MahasiswaApiService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private router: Router
   ) {}
 
   ngOnInit() {
@@ -50,13 +51,8 @@ export class MahasiswaDetailComponent implements OnInit {
       error => {
         console.log(error);
       }
-     );
-     this.mahasiswaApi.postUserVerify().subscribe(
-      res => { console.log(res);
-              },
-      err => {this.router.navigate(['/login']);
-      localStorage.removeItem('token'); }
     );
+
   }
 
   updateVal(){
@@ -71,8 +67,10 @@ export class MahasiswaDetailComponent implements OnInit {
     console.log(this.mahasiswaDetail);
     this.updateMahaForm.controls.nama_lengkap.setValue(this.mahasiswaDetail.result.nama_lengkap);
     this.updateMahaForm.controls.angkatan.patchValue(this.mahasiswaDetail.result.angkatan);
+    this.updateMahaForm.controls.email.patchValue(this.mahasiswaDetail.result.email);
     this.updateMahaForm.controls.alamat.patchValue(this.mahasiswaDetail.result.alamat);
     this.updateMahaForm.controls.foto.patchValue(this.mahasiswaDetail.result.foto);
+    this.updateMahaForm.controls.nim.patchValue(this.mahasiswaDetail.result.nim);
     this.updateMahaForm.controls.prodi.patchValue(this.mahasiswaDetail.result.prodi);
     this.updateMahaForm.controls.tanggal_lahir.patchValue(this.mahasiswaDetail.result.tanggal_lahir);
     this.updateMahaForm.controls.telepon.patchValue(this.mahasiswaDetail.result.telepon);
@@ -81,20 +79,12 @@ export class MahasiswaDetailComponent implements OnInit {
 
   onSubmit(){
     console.log(this.updateMahaForm.value);
-    this.mahasiswaApi.postMahaUpdate(this.updateMahaForm.value, this.nim).subscribe(
+    /*this.mahasiswaApi.postMahaUpdate(this.updateMahaForm.value, this.nim).subscribe(
       res => {console.log(res);
               this.authTkn = res;
-              alert(this.authTkn.info);
-              this.mahasiswaApi.getMahasiswaDetail(this.nim).subscribe(
-                result => {
-                  this.mahasiswaDetail = result;
-                },
-              );
-              },
+              alert(this.authTkn.info)},
       err => {console.log(err);}
     );
-
-
-
+    */
   }
 }
