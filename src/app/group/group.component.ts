@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+<<<<<<< HEAD
+import { Router, NavigationStart, Event, NavigationEnd } from '@angular/router';
+import { MahasiswaApiService } from '../shared/services/mahasiswa-api.service';
+=======
 
+>>>>>>> 1a9cfef233106da81d1009be7ad65af53f684361
 
 export interface Group {
   ungrouped: Array<any>;
@@ -13,30 +18,71 @@ export interface Group {
   styleUrls: ['./group.component.scss']
 })
 export class GroupComponent implements OnInit {
+<<<<<<< HEAD
+=======
   title = 'json-file-read-angular';
+>>>>>>> 1a9cfef233106da81d1009be7ad65af53f684361
 
+  public daftar: any;
+
+  public daftarMaha: any;
+  public groupingAkhir : any;
+  public groupProperty: string[] = [];
   public grouping: Group = {ungrouped: null};
   public form: FormGroup;
+  private daftarGroup: any;
   groupform = this.fb.group({
     index: [null, Validators.required],
     group: [null, Validators.required]
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private mahasiswaApi: MahasiswaApiService, private fb: FormBuilder, private router: Router) {
+
+  }
+
+  trackByFn(index, maha) {
+    return index;
+  }
 
   ngOnInit() {
+<<<<<<< HEAD
+    this.mahasiswaApi.postUserVerify().subscribe(
+      res => {console.log(res);},
+      err => {this.router.navigate(['/login']);}
+    );
+    this.daftar =  localStorage.getItem("MahaJSON");
+    let groupjs = localStorage.getItem("GroupJSON");
+    if(groupjs === "null"){
+    this.groupProperty.push('ungrouped');
+    }
+    else{
+    this.groupProperty = JSON.parse(groupjs);
+    }
+    console.log(this.groupProperty);
+    console.log(this.daftar);
+    this.daftarMaha = JSON.parse(this.daftar);
+    console.log(this.daftarMaha);
+    this.grouping = this.daftarMaha;
+    console.log(this.daftarMaha);
+=======
+>>>>>>> 1a9cfef233106da81d1009be7ad65af53f684361
     console.log(this.grouping.ungrouped);
   }
 
 
   onSubmit(){
-    console.log(this.groupform.value.nama);
+    console.log(this.groupform.value.index);
     var index =  this.groupform.value.index;
+    console.log(index);
     //var index = this.grouping.ungrouped.map(x => x.nama_lengkap).indexOf(this.groupform.value.nama);
     console.log(index);
     console.log(this.grouping.ungrouped[index]);
     console.log(this.grouping.ungrouped);
     var groupProp = this.groupform.value.group;
+    groupProp = groupProp.toLowerCase();
+    if(!this.groupProperty.includes(groupProp)){
+      this.groupProperty.push(groupProp);
+    }
     if(this.grouping.hasOwnProperty(groupProp)){
       console.log('has properties');
       this.grouping[groupProp].push(this.grouping.ungrouped[index])
@@ -46,8 +92,37 @@ export class GroupComponent implements OnInit {
     this.grouping[groupProp].push(this.grouping.ungrouped[index]);
   }
     this.grouping.ungrouped.splice(index, 1);
+    this.saveState();
     console.log(this.grouping);
+    console.log(this.groupProperty)
   }
+
+  deleteMahasiswaGroup(groupPro, index) {
+    let tempGroup = this.grouping[groupPro];
+    console.log(tempGroup);
+    this.grouping.ungrouped.push(tempGroup[index]);
+    this.grouping[groupPro].splice(index, 1);
+    this.grouping[groupPro]
+    console.log(this.grouping[groupPro]);
+    if(this.grouping[groupPro].length === 0){
+      delete this.grouping[groupPro];
+    }
+    console.log(this.grouping[groupPro]);
+    this.saveState();
+
+  }
+
+  saveState() {
+    this.groupingAkhir = JSON.stringify(this.grouping);
+    this.daftarGroup = JSON.stringify(this.groupProperty);
+    console.log(JSON.parse(this.groupingAkhir));
+    console.log(JSON.parse(this.daftarGroup));
+    localStorage.setItem("MahaJSON",this.groupingAkhir);
+    localStorage.setItem("GroupJSON",this.daftarGroup);
+  }
+
+
+}
 
   /*
 
@@ -70,4 +145,4 @@ export class GroupComponent implements OnInit {
     });
   }
 */
-}
+

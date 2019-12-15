@@ -43,31 +43,33 @@
   }
 
   .drop-text-display{
-    display: inline;
+    display: block;
     float: left;
     padding: 0 2px;
     font-size: 20px;
+    height: 23px;
   }
 
+  #groupMaha{
+    font-size: 18px;
+  }
+
+
   .btn-drop{
+    display: block;
     padding: 5px;
     border: 2px solid transparent;
     transition: border 1s;
     font-size: 20px;
 
     &:hover {
-      width: 180px;
       border: 2px solid grey;
       background-color: white;
-      transform: translateX(-150px);
       text-align: right;
       padding-right: 5px;
       transition: border 1s;
     }
 
-    &:hover + .drop-text{
-      display: block;
-    }
 
   }
 

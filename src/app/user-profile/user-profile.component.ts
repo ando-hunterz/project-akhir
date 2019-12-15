@@ -21,20 +21,14 @@ export class UserProfileComponent implements OnInit {
       res => {console.log(res);},
       err => {console.log(err);}
     );
-    this.mahasiswaApi.postUserVerify(this.xtoken).subscribe(
-      res => {
-        console.log(res);
-        this.uData = res;
-        console.log(this.uData);
-      },
-      err => {
-        console.log(err);
-        this.authTkn = err;
-        localStorage.removeItem('token');
-        alert(this.authTkn.info);
-        this.route.navigate(['login']);
-      }
+    this.mahasiswaApi.postUserVerify().subscribe(
+      res => { console.log(res);
+              },
+      err => {this.route.navigate(['/login']);
+      localStorage.removeItem('token'); }
     );
   }
 
+
 }
+

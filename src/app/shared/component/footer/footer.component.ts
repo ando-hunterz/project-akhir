@@ -39,7 +39,23 @@ export class FooterComponent implements OnInit {
       );
       $("#aboutUs").hover(
         function() {
-          $(this).css({ width: "130px", transform: "translateX(-100px)" });
+          $(this).css({ width: "150px", transform: "translateX(-120px)" });
+        },
+        function() {
+          $(this).css({ width: "", transform: "" });
+        }
+      );
+      $("#groupMaha").hover(
+        function() {
+          $(this).css({ width: "210px", transform: "translateX(-180px)" });
+        },
+        function() {
+          $(this).css({ width: "", transform: "" });
+        }
+      );
+      $("#addMaha").hover(
+        function() {
+          $(this).css({ width: "180px", transform: "translateX(-150px)" });
         },
         function() {
           $(this).css({ width: "", transform: "" });
