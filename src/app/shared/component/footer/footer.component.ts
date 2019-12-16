@@ -50,7 +50,7 @@ export class FooterComponent implements OnInit {
     }
 
     );
-    this.logStat = false;
+
     this.mahasiswaApi.currentToken.subscribe(
       value => {
         console.log(value);

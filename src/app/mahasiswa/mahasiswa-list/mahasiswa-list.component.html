@@ -6,8 +6,10 @@
               Sort Mahasiswa
             </button>
             <div class="dropdown-menu btn-block" aria-labelledby="dropdownMenuButton">
-                <button class="btn btn-primary btn-block dropdown-item" (click)="mahaSortIdDesc()">ID Descending</button>
-                <button class="btn btn-primary btn-block dropdown-item" (click)="mahaSortIdAsc()">ID Ascending</button>
+                <button class="btn btn-primary btn-block dropdown-item" (click)="mahaSortNimAsc()">NIM Ascending</button>
+                <button class="btn btn-primary btn-block dropdown-item" (click)="mahaSortNimDesc()">NIM Descending</button>
+                <button class="btn btn-primary btn-block dropdown-item" (click)="mahaSortNameAsc()">Nama Ascending</button>
+                <button class="btn btn-primary btn-block dropdown-item" (click)="mahaSortNameDesc()">Nama Descending</button>
             </div>
           </div>
         </div>
@@ -30,26 +32,3 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> bd8c4bbdf63d789869657002981b9ded9d5b1bc1
-  <!--
-    <table class="table ">
-      <thead class="thead-dark">
-        <tr>
-          <th>nim</th>
-          <th>nama</th>
-          <th>details</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let maha of mahasiswa.result.mahasiswa">
-          <td>{{maha.nim}}</td>
-          <td>{{maha.nama_lengkap}}</td>
-          <td><button class="btn btn-primary" routerLink="./{{maha.nim}}">Detail</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  -->

@@ -31,22 +31,18 @@ export class UserUpdateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.xtoken.token = localStorage.getItem('token');
-    console.log(this.xtoken);
-    this.mahasiswaApi.postUserVerify(this.xtoken).subscribe(
-      res => {
-      this.uData = res;
-      console.log(res);
-      console.log(this.uData.result.user);
-      this.preFilled();
-      },
+    this.mahasiswaApi.viewUser().subscribe(
+      res => {console.log(res);},
+      err => {console.log(err);}
+    );
+    this.mahasiswaApi.postUserVerify().subscribe(
+      res => { console.log(res);
+              },
       err => {
-        console.log(err);
-        this.authTkn = err;
         localStorage.removeItem('token');
-        alert(this.authTkn.info);
-        this.route.navigate(['login']);
-      }
+        this.mahasiswaApi.getCurrentToken();
+        this.route.navigate(['/login']);
+        }
     );
 
   }

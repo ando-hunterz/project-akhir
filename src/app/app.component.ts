@@ -26,7 +26,7 @@ import { trigger, transition, style, query, animateChild, group, animate } from 
          ]),
          query(':enter', animateChild())
        ]),
-       transition('login <=> homepage, profile <=> update', [
+       transition('login <=> homepage, home <=> regist, regist <=> login, profile <=> update', [
         style({ position: 'relative', height: '150vh' }),
         query(':enter, :leave', [
           style({

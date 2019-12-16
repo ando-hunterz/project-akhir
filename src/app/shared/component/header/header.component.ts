@@ -73,15 +73,14 @@ export class HeaderComponent implements OnInit {
     console.log(this.token);
     if (this.token.token != null) {
       console.log(this.token);
-      this.mahasiswaApi.postUserVerify(this.token).subscribe(
-        res => {
-          this.route.navigate(['/homepage']);
-        },
+      this.mahasiswaApi.postUserVerify().subscribe(
+        res => { console.log(res);
+                },
         err => {
-          console.log(err);
-          this.logStat = false;
-          this.route.navigate(['']);
-        }
+          localStorage.removeItem('token');
+          this.mahasiswaApi.getCurrentToken();
+          this.route.navigate(['/login']);
+          }
       );
     } else {
       this.logStat = false;
