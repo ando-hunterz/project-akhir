@@ -9,6 +9,7 @@ import { GroupComponent } from './mahasiswa/group/group.component';
 import { RegisterComponent } from './register/register.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AddMahasiswaComponent } from './mahasiswa/add-mahasiswa/add-mahasiswa.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent,data: {animation: 'home'}},
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'add', component: AddMahasiswaComponent, data: {animation: 'add'}},
   { path: 'group', component: GroupComponent, data: {animation: 'group'}},
   { path: 'register', component: RegisterComponent,  data: {animation: 'regist'}},
+  { path: 'about', component: AboutUsComponent,  data: {animation: 'about'}},
 ];
 
 @NgModule({
