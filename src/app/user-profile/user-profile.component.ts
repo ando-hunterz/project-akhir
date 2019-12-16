@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { uData, authTkn } from '../shared/model/loginDetails';
+import { authTkn, user } from '../shared/model/loginDetails';
 import { MahasiswaApiService } from '../shared/services/mahasiswa-api.service';
 import { Router } from '@angular/router';
 
@@ -12,7 +12,7 @@ export class UserProfileComponent implements OnInit {
 
   public xtoken = {token: localStorage.getItem("token")};
 
-  public uData: uData;
+  public uData: user;
   authTkn: authTkn = null;
   constructor(private mahasiswaApi: MahasiswaApiService,private route: Router) { }
 

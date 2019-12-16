@@ -47,7 +47,7 @@
         <div class="card-body">
           <p *ngFor="let member of grouping[nama], let i = index">
             {{ member.nama_lengkap }}
-            <button class="btn btn-secondary"   (click)="deleteMahasiswaGroup(nama, i, member.nama_lengkap)">Delete</button>
+            <button class="btn btn-secondary"   (click)="deleteMahasiswaGroup(nama, i)">Delete</button>
           </p>
         </div>
         </div>

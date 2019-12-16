@@ -25,6 +25,7 @@ export interface user{
     tanggal_lahir: string;
     telepon: string;
     nama_lengkap: string;
+    user_name: string;
   }
 }
 
