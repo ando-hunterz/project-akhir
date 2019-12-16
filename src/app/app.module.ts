@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GroupComponent } from './group/group.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AddMahasiswaComponent } from './add-mahasiswa/add-mahasiswa.component';
+import { AboutUSComponent } from './about-us/about-us.component';
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
@@ -37,6 +38,7 @@ export function tokenGetter() {
     GroupComponent,
     UserProfileComponent,
     AddMahasiswaComponent,
+    AboutUSComponent,
   ],
   imports: [
     FormsModule,

@@ -62,9 +62,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.token.token = localStorage.getItem('token');
-    if(this.token.token == null){
-    this.logStat = false;}
-    else{
+    if (this.token.token == null) {
+    this.logStat = false; } else {
       this.logStat = true;
     }
   }
