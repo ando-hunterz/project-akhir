@@ -6,8 +6,13 @@
   >
     <form [formGroup]="groupform" (submit)="onSubmit()">
       <div class="form-group">
+<<<<<<< HEAD
         <h3 class="text-center "> Grouping Page </h3>
         <label for="mahasiswa"> Nama Mahasiswa </label>
+=======
+        <h1 class="text-center ">Grouping Page</h1>
+        <label for="mahasiswa">Nama Mahasiswa</label>
+>>>>>>> 2bb816d9cdee51d699a8a0790470f84fee99ceda
         <select
           formControlName="index"
           class="form-control"
@@ -28,12 +33,18 @@
           placeholder="Group"
           name="group"
         />
+<<<<<<< HEAD
         <div class="card">
+=======
+>>>>>>> 2bb816d9cdee51d699a8a0790470f84fee99ceda
         <button type="submit" class="btn pull-right btn-outline-primary">
           Submit
         </button>
       </div>
+<<<<<<< HEAD
       </div>
+=======
+>>>>>>> 2bb816d9cdee51d699a8a0790470f84fee99ceda
     </form>
   </div>
 
@@ -49,7 +60,11 @@
         <div class="card-body">
           <p *ngFor="let member of grouping[nama], let i = index">
             {{ member.nama_lengkap }}
+<<<<<<< HEAD
             <button class="btn btn-secondary"   (click)="deleteMahasiswaGroup(nama, i, member.nama_lengkap)">Delete</button>
+=======
+            <button class="btn btn-secondary"   (click)="deleteMahasiswaGroup(nama, i)">Delete</button>
+>>>>>>> 2bb816d9cdee51d699a8a0790470f84fee99ceda
           </p>
         </div>
         </div>

@@ -19,7 +19,11 @@ export class GroupComponent implements OnInit {
   public daftar: any;
 
   public daftarMaha: any;
+<<<<<<< HEAD
   public groupingAkhir: any;
+=======
+  public groupingAkhir : any;
+>>>>>>> 2bb816d9cdee51d699a8a0790470f84fee99ceda
   public groupProperty: string[] = [];
   public grouping: Group = {ungrouped: null};
   public form: FormGroup;
@@ -39,8 +43,13 @@ export class GroupComponent implements OnInit {
 
   ngOnInit() {
     this.mahasiswaApi.viewUser().subscribe(
+<<<<<<< HEAD
       res => {console.log(res); },
       err => {console.log(err); }
+=======
+      res => {console.log(res);},
+      err => {console.log(err);}
+>>>>>>> 2bb816d9cdee51d699a8a0790470f84fee99ceda
     );
     this.mahasiswaApi.postUserVerify().subscribe(
       res => { console.log(res);
@@ -51,11 +60,20 @@ export class GroupComponent implements OnInit {
         this.router.navigate(['/login']);
         }
     );
+<<<<<<< HEAD
     this.daftar =  localStorage.getItem('MahaJSON');
     const groupjs = localStorage.getItem('GroupJSON');
     if (groupjs === 'null') {
     this.groupProperty.push('ungrouped');
     } else {
+=======
+    this.daftar =  localStorage.getItem("MahaJSON");
+    let groupjs = localStorage.getItem("GroupJSON");
+    if(groupjs === "null"){
+    this.groupProperty.push('ungrouped');
+    }
+    else{
+>>>>>>> 2bb816d9cdee51d699a8a0790470f84fee99ceda
     this.groupProperty = JSON.parse(groupjs);
     }
     console.log(this.groupProperty);
@@ -68,6 +86,7 @@ export class GroupComponent implements OnInit {
   }
 
 
+<<<<<<< HEAD
   onSubmit() {
     console.log(this.groupform.value.index);
     const index =  this.groupform.value.index;
@@ -85,12 +104,33 @@ export class GroupComponent implements OnInit {
       console.log('has properties');
       this.grouping[groupProp].push(this.grouping.ungrouped[index]);
   } else {
+=======
+  onSubmit(){
+    console.log(this.groupform.value.index);
+    var index =  this.groupform.value.index;
+    console.log(index);
+    //var index = this.grouping.ungrouped.map(x => x.nama_lengkap).indexOf(this.groupform.value.nama);
+    console.log(index);
+    console.log(this.grouping.ungrouped[index]);
+    console.log(this.grouping.ungrouped);
+    var groupProp = this.groupform.value.group;
+    groupProp = groupProp.toLowerCase();
+    if(!this.groupProperty.includes(groupProp)){
+      this.groupProperty.push(groupProp);
+    }
+    if(this.grouping.hasOwnProperty(groupProp)){
+      console.log('has properties');
+      this.grouping[groupProp].push(this.grouping.ungrouped[index])
+  }
+  else{
+>>>>>>> 2bb816d9cdee51d699a8a0790470f84fee99ceda
     this.grouping[groupProp] = [];
     this.grouping[groupProp].push(this.grouping.ungrouped[index]);
   }
     this.grouping.ungrouped.splice(index, 1);
     this.saveState();
     console.log(this.grouping);
+<<<<<<< HEAD
     console.log(this.groupProperty);
   }
 
@@ -102,6 +142,19 @@ export class GroupComponent implements OnInit {
     this.grouping[groupPro];
     console.log(this.grouping[groupPro]);
     if (this.grouping[groupPro].length === 0) {
+=======
+    console.log(this.groupProperty)
+  }
+
+  deleteMahasiswaGroup(groupPro, index) {
+    let tempGroup = this.grouping[groupPro];
+    console.log(tempGroup);
+    this.grouping.ungrouped.push(tempGroup[index]);
+    this.grouping[groupPro].splice(index, 1);
+    this.grouping[groupPro]
+    console.log(this.grouping[groupPro]);
+    if(this.grouping[groupPro].length === 0){
+>>>>>>> 2bb816d9cdee51d699a8a0790470f84fee99ceda
       delete this.grouping[groupPro];
     }
     console.log(this.grouping[groupPro]);
@@ -114,8 +167,13 @@ export class GroupComponent implements OnInit {
     this.daftarGroup = JSON.stringify(this.groupProperty);
     console.log(JSON.parse(this.groupingAkhir));
     console.log(JSON.parse(this.daftarGroup));
+<<<<<<< HEAD
     localStorage.setItem('MahaJSON', this.groupingAkhir);
     localStorage.setItem('GroupJSON', this.daftarGroup);
+=======
+    localStorage.setItem("MahaJSON",this.groupingAkhir);
+    localStorage.setItem("GroupJSON",this.daftarGroup);
+>>>>>>> 2bb816d9cdee51d699a8a0790470f84fee99ceda
   }
 
 
