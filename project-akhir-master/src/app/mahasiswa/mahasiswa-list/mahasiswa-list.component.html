@@ -1,0 +1,34 @@
+  <div class="container" *ngIf="mahasiswa != null">
+    <div class="row  no-gutters">
+      <div class="col-lg-3 my-3 mx-auto">
+        <div class="dropdown">
+            <button class="btn btn-outline-secondary btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" >
+              Sort Mahasiswa
+            </button>
+            <div class="dropdown-menu btn-block" aria-labelledby="dropdownMenuButton">
+                <button class="btn btn-primary btn-block dropdown-item" (click)="mahaSortNimAsc()">NIM Ascending</button>
+                <button class="btn btn-primary btn-block dropdown-item" (click)="mahaSortNimDesc()">NIM Descending</button>
+                <button class="btn btn-primary btn-block dropdown-item" (click)="mahaSortNameAsc()">Nama Ascending</button>
+                <button class="btn btn-primary btn-block dropdown-item" (click)="mahaSortNameDesc()">Nama Descending</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="row no-gutters" >
+      <div class="col-lg animated slideInUp" *ngFor="let maha of mahasiswa.result.mahasiswa">
+        <div class="my-3 mx-auto card text-center" >
+            <div class="card-header">
+            <h5 class="card-title mt-4" >{{ maha.nama_lengkap }}</h5>
+            </div>
+            <div class="card-body">
+            <h6 class="card-subtitle text-muted my-2">{{ maha.nim }}</h6>
+            </div>
+            <div class="card-footer">
+              <button class=" btn btn-outline-primary card-button" routerLink="./{{ maha.nim }}">
+                Detail
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
