@@ -10,11 +10,12 @@ import { RegisterComponent } from './register/register.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AddMahasiswaComponent } from './mahasiswa/add-mahasiswa/add-mahasiswa.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { SearchMahasiswaComponent } from './mahasiswa/search-mahasiswa/search-mahasiswa.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent,data: {animation: 'home'}},
   { path: 'login', component: LoginComponent,data: {animation: 'login'}},
-  { path: 'group', component: GroupComponent,},
+  { path: 'group', component: GroupComponent,data: {animation: 'group'}},
   { path: 'homepage/:nim', component: MahasiswaDetailComponent, data: {animation: 'detail'}},
   { path: 'homepage', component: MahasiswaListComponent,data: {animation: 'homepage'}},
   { path: 'profile', component: UserProfileComponent,data: {animation: 'profile'}},
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'group', component: GroupComponent, data: {animation: 'group'}},
   { path: 'register', component: RegisterComponent,  data: {animation: 'regist'}},
   { path: 'about', component: AboutUsComponent,  data: {animation: 'about'}},
+  { path: 'search', component: SearchMahasiswaComponent,  data: {animation: 'search'}},
 ];
 
 @NgModule({

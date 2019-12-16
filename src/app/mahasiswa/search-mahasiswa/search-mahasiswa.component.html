@@ -1,1 +1,8 @@
-<p>search-mahasiswa works!</p>
+<div class="container">
+  <div class="search-input input-group input-group-lg">
+    <input class="form-control" [(ngModel)]="searchString" placeholder="Cari Nama Mahasiswa">
+  </div>
+  <div class="list-group">
+    <a class="list-group-item list-group-item-action" *ngFor="let maha of mahasiswa.result.mahasiswa | searchFilter : searchString" (click)="detail(maha.nim)">{{maha.nama_lengkap}}</a>
+  </div>
+</div>
