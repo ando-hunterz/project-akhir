@@ -19,7 +19,6 @@ export class FooterComponent implements OnInit {
     $(document).ready(function() {
       $(".btn-drop").hover(
         function() {
-          console.log("worked!");
           $(this)
             .children("p")
             .addClass("drop-text-display animated fadeIn");
@@ -28,7 +27,6 @@ export class FooterComponent implements OnInit {
             .removeClass("drop-text-none");
         },
         function() {
-          console.log("this out");
           $(this)
             .children("p")
             .addClass("drop-text-none");
@@ -40,6 +38,14 @@ export class FooterComponent implements OnInit {
       $("#aboutUs").hover(
         function() {
           $(this).css({ width: "150px", transform: "translateX(-120px)" });
+        },
+        function() {
+          $(this).css({ width: "", transform: "" });
+        }
+      );
+      $("#searchMaha").hover(
+        function() {
+          $(this).css({ width: "220px", transform: "translateX(-190px)" });
         },
         function() {
           $(this).css({ width: "", transform: "" });

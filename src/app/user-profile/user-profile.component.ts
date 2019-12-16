@@ -20,7 +20,7 @@ export class UserProfileComponent implements OnInit {
     this.mahasiswaApi.viewUser().subscribe(
       res => {console.log(res);
               this.uData = res;
-             console.log(this.uData);},
+            },
       err => {console.log(err);}
     );
     this.mahasiswaApi.postUserVerify().subscribe(

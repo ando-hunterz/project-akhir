@@ -1,8 +1,8 @@
-import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router, NavigationStart, Event, NavigationEnd } from '@angular/router';
-import { MahasiswaApiService } from 'src/app/shared/services/mahasiswa-api.service';
-
+import { Component, OnInit, HostListener, OnDestroy } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Router, NavigationStart, Event, NavigationEnd } from "@angular/router";
+import { MahasiswaApiService } from "src/app/shared/services/mahasiswa-api.service";
+import { Mahasiswa } from "src/app/shared/model/mahasiswa";
 
 export interface Group {
   ungrouped: Array<any>;
@@ -10,120 +10,121 @@ export interface Group {
 }
 
 @Component({
-  selector: 'app-group',
-  templateUrl: './group.component.html',
-  styleUrls: ['./group.component.scss']
+  selector: "app-group",
+  templateUrl: "./group.component.html",
+  styleUrls: ["./group.component.scss"]
 })
 export class GroupComponent implements OnInit {
-
   public daftar: any;
 
   public daftarMaha: any;
-  public groupingAkhir : any;
+  public groupingAkhir: any;
   public groupProperty: string[] = [];
-  public grouping: Group = {ungrouped: null};
+  public grouping: Group = { ungrouped: null };
   public form: FormGroup;
   private daftarGroup: any;
+  private mahasiswa: Mahasiswa;
   groupform = this.fb.group({
     index: [null, Validators.required],
     group: [null, Validators.required]
   });
 
-  constructor(private mahasiswaApi: MahasiswaApiService, private fb: FormBuilder, private router: Router) {
-
-  }
+  constructor(
+    private mahasiswaApi: MahasiswaApiService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
 
   trackByFn(index, maha) {
     return index;
   }
 
   ngOnInit() {
+    this.mahasiswaApi.getAllMahasiswaDataSortByNimDesc().subscribe(
+      result => {
+        this.mahasiswa = result;
+        console.log(result);
+      },
+      error => {
+        console.log(error);
+      }
+    );
     this.mahasiswaApi.viewUser().subscribe(
-      res => {console.log(res);},
-      err => {console.log(err);}
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
     );
     this.mahasiswaApi.postUserVerify().subscribe(
-      res => { console.log(res);
-              },
+      res => {
+        console.log(res);
+      },
       err => {
-        localStorage.removeItem('token');
+        localStorage.removeItem("token");
         this.mahasiswaApi.getCurrentToken();
-        this.router.navigate(['/login']);
-        }
+        this.router.navigate(["/login"]);
+      }
     );
-    this.daftar =  localStorage.getItem("MahaJSON");
-    let groupjs = localStorage.getItem("GroupJSON");
-    if(groupjs === "null"){
-    this.groupProperty.push('ungrouped');
+    this.daftar = localStorage.getItem("MahaJSON");
+    const groupjs = localStorage.getItem("GroupJSON");
+    if (groupjs === "null") {
+      this.groupProperty.push("ungrouped");
+    } else {
+      this.groupProperty = JSON.parse(groupjs);
     }
-    else{
-    this.groupProperty = JSON.parse(groupjs);
-    }
-    console.log(this.groupProperty);
-    console.log(this.daftar);
     this.daftarMaha = JSON.parse(this.daftar);
-    console.log(this.daftarMaha);
     this.grouping = this.daftarMaha;
-    console.log(this.daftarMaha);
-    console.log(this.grouping.ungrouped);
   }
 
-
-  onSubmit(){
+  onSubmit() {
     console.log(this.groupform.value.index);
-    var index =  this.groupform.value.index;
-    console.log(index);
-    //var index = this.grouping.ungrouped.map(x => x.nama_lengkap).indexOf(this.groupform.value.nama);
-    console.log(index);
-    console.log(this.grouping.ungrouped[index]);
-    console.log(this.grouping.ungrouped);
-    var groupProp = this.groupform.value.group;
-    groupProp = groupProp.toLowerCase();
-    if(!this.groupProperty.includes(groupProp)){
-      this.groupProperty.push(groupProp);
+    if (
+      this.groupform.value.index != null &&
+      this.groupform.value.group != null &&
+      this.groupform.value.index < this.mahasiswa.result.count
+    ) {
+      const index = this.groupform.value.index;
+      let groupProp = this.groupform.value.group;
+      groupProp = groupProp.toLowerCase();
+      if (!this.groupProperty.includes(groupProp)) {
+        this.groupProperty.push(groupProp);
+      }
+      if (this.grouping.hasOwnProperty(groupProp)) {
+        this.grouping[groupProp].push(this.grouping.ungrouped[index]);
+      } else {
+        this.grouping[groupProp] = [];
+        this.grouping[groupProp].push(this.grouping.ungrouped[index]);
+      }
+      this.grouping.ungrouped.splice(index, 1);
+      this.saveState();
+      this.mahasiswa.result.count = this.mahasiswa.result.count - 1;
+    } else {
+      alert("Pilih Nama Valid dan Group");
     }
-    if(this.grouping.hasOwnProperty(groupProp)){
-      console.log('has properties');
-      this.grouping[groupProp].push(this.grouping.ungrouped[index])
-  }
-  else{
-    this.grouping[groupProp] = [];
-    this.grouping[groupProp].push(this.grouping.ungrouped[index]);
-  }
-    this.grouping.ungrouped.splice(index, 1);
-    this.saveState();
-    console.log(this.grouping);
-    console.log(this.groupProperty)
   }
 
   deleteMahasiswaGroup(groupPro, index) {
-    let tempGroup = this.grouping[groupPro];
-    console.log(tempGroup);
+    const tempGroup = this.grouping[groupPro];
     this.grouping.ungrouped.push(tempGroup[index]);
     this.grouping[groupPro].splice(index, 1);
-    this.grouping[groupPro]
-    console.log(this.grouping[groupPro]);
-    if(this.grouping[groupPro].length === 0){
+    this.grouping[groupPro];
+    if (this.grouping[groupPro].length === 0) {
       delete this.grouping[groupPro];
     }
-    console.log(this.grouping[groupPro]);
     this.saveState();
-
   }
 
   saveState() {
     this.groupingAkhir = JSON.stringify(this.grouping);
     this.daftarGroup = JSON.stringify(this.groupProperty);
-    console.log(JSON.parse(this.groupingAkhir));
-    console.log(JSON.parse(this.daftarGroup));
-    localStorage.setItem("MahaJSON",this.groupingAkhir);
-    localStorage.setItem("GroupJSON",this.daftarGroup);
+    localStorage.setItem("MahaJSON", this.groupingAkhir);
+    localStorage.setItem("GroupJSON", this.daftarGroup);
   }
-
-
 }
 
-  /*
+/*
 
   onDeleteItem(index) {
     if (confirm("Want to delete it?")) {
@@ -144,4 +145,3 @@ export class GroupComponent implements OnInit {
     });
   }
 */
-

@@ -66,6 +66,10 @@ export class HeaderComponent implements OnInit {
     else {this.logStat = true;}
   }
 
+  title() {
+    this.route.navigate(['homepage']);
+  }
+
   logIn() {
     this.route.navigate(['login']);
   }
