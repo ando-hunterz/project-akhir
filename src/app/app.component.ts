@@ -8,7 +8,7 @@ import { trigger, transition, style, query, animateChild, group, animate } from 
   styleUrls: ['./app.component.scss'],
   animations: [
     trigger('routeAnimations', [
-      transition('home <=> login', [
+      transition('home <=> login, homepage <=> add, homepage <=> group, homepage <=> search', [
         style({ position: 'relative', height: '86vh' }),
         query(':enter, :leave', [
           style({
@@ -26,7 +26,7 @@ import { trigger, transition, style, query, animateChild, group, animate } from 
          ]),
          query(':enter', animateChild())
        ]),
-       transition('login <=> homepage, profile <=> update', [
+       transition('login <=> homepage, home <=> regist, regist <=> login, profile <=> update, homepage <=> about, homepage <=> search', [
         style({ position: 'relative', height: '150vh' }),
         query(':enter, :leave', [
           style({

@@ -14,9 +14,11 @@ export class MahasiswaApiService {
 
   public currentToken: BehaviorSubject<any>;
   public token: Observable<string>;
+  public authToken = {token: null};
 
   private mahasiswaUrl = 'https://umn-pti2019.herokuapp.com/api/mahasiswa/';
   private baseUrl = 'https://umn-pti2019.herokuapp.com/api/';
+
   constructor(private http: HttpClient) {
    this.currentToken = new BehaviorSubject<any>("null");
    }
@@ -25,12 +27,20 @@ export class MahasiswaApiService {
     return this.http.get<Mahasiswa>(this.mahasiswaUrl);
   }
 
-  getAllMahasiswaDataSortByIdDesc(): Observable<Mahasiswa> {
-    return this.http.get<Mahasiswa>(this.mahasiswaUrl + '?sort=id&order=desc');
+  getAllMahasiswaDataSortByNimDesc(): Observable<Mahasiswa> {
+    return this.http.get<Mahasiswa>(this.mahasiswaUrl + '?sort=nim&order=desc');
   }
 
-  getAllMahasiswaDataSortByIdAsc(): Observable<Mahasiswa> {
-    return this.http.get<Mahasiswa>(this.mahasiswaUrl + '?sort=id&order=asc');
+  getAllMahasiswaDataSortByNimAsc(): Observable<Mahasiswa> {
+    return this.http.get<Mahasiswa>(this.mahasiswaUrl + '?sort=nim&order=asc');
+  }
+
+  getAllMahasiswaDataSortByNameAsc(): Observable<Mahasiswa> {
+    return this.http.get<Mahasiswa>(this.mahasiswaUrl + '?sort=nama_lengkap&order=asc');
+  }
+
+  getAllMahasiswaDataSortByNameDesc(): Observable<Mahasiswa> {
+    return this.http.get<Mahasiswa>(this.mahasiswaUrl + '?sort=nama_lengkap&order=desc');
   }
 
   addMahasiswa(modal: any): Observable<MahasiswaDetail>{
@@ -55,8 +65,9 @@ export class MahasiswaApiService {
   postUserUpdate(model: any): Observable<authTkn> {
     return this.http.put<authTkn>(this.baseUrl + 'update', model);
   }
-  postUserVerify(model: any): Observable<uData> {
-    return this.http.post<uData>(this.baseUrl + 'verify', model);
+  postUserVerify(): Observable<uData> {
+    this.authToken.token = localStorage.getItem('token');
+    return this.http.post<uData>(this.baseUrl + 'verify', this.authToken);
   }
 
   postMahaUpdate(model: any, nim: string): Observable<any> {

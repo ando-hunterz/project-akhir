@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import * as CryptoJS from 'crypto-js';
 import { MahasiswaApiService } from '../shared/services/mahasiswa-api.service';
-import { uData, xToken, authTkn } from '../shared/model/loginDetails';
+import { xToken, authTkn, user } from '../shared/model/loginDetails';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class UserUpdateComponent implements OnInit {
   public xtoken: xToken = {token: null};
   private authTkn: authTkn = null;
-  private uData: uData = null;
+  private uData: user = null;
 
   updateForm = this.fb.group({
     nama_lengkap: [''],
@@ -31,32 +31,31 @@ export class UserUpdateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.xtoken.token = localStorage.getItem('token');
-    console.log(this.xtoken);
-    this.mahasiswaApi.postUserVerify(this.xtoken).subscribe(
-      res => {
-      this.uData = res;
-      console.log(res);
-      console.log(this.uData.result.user);
-      this.preFilled();
-      },
+    this.mahasiswaApi.postUserVerify().subscribe(
+      res => { console.log(res);
+              },
       err => {
-        console.log(err);
-        this.authTkn = err;
         localStorage.removeItem('token');
-        alert(this.authTkn.info);
-        this.route.navigate(['login']);
-      }
+        this.mahasiswaApi.getCurrentToken();
+        this.route.navigate(['/login']);
+        }
     );
+    this.mahasiswaApi.viewUser().subscribe(
+      res => {console.log(res);
+              this.uData = res;
+              this.preFilled();},
+      err => {console.log(err);}
+    );
+
 
   }
 
   preFilled() {
     console.log(this.uData);
-    this.updateForm.controls.nama_lengkap.setValue(this.uData.result.user.nama_lengkap);
-    this.updateForm.controls.alamat.patchValue(this.uData.result.user.alamat);
-    this.updateForm.controls.tanggal_lahir.patchValue(this.uData.result.user.tanggal_lahir);
-    this.updateForm.controls.foto.patchValue(this.uData.result.user.foto);
+    this.updateForm.controls.nama_lengkap.setValue(this.uData.result.nama_lengkap);
+    this.updateForm.controls.alamat.patchValue(this.uData.result.alamat);
+    this.updateForm.controls.tanggal_lahir.patchValue(this.uData.result.tanggal_lahir);
+    this.updateForm.controls.foto.patchValue(this.uData.result.foto);
   }
   get form() {
     return this.updateForm.value;
@@ -85,7 +84,6 @@ export class UserUpdateComponent implements OnInit {
       res => {
         console.log(res);
         this.authTkn = res;
-        localStorage.setItem('token',this.authTkn.token);
         alert(this.authTkn.info);
       },
       err => {
