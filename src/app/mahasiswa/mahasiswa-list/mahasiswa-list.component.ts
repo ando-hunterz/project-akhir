@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
-import { Group } from '../group/group.component';
 import { Mahasiswa } from 'src/app/shared/model/mahasiswa';
 import { MahasiswaApiService } from 'src/app/shared/services/mahasiswa-api.service';
 
@@ -14,7 +13,6 @@ export class MahasiswaListComponent implements OnInit {
   public xtoken = {
     token: localStorage.getItem("token")
   };
-  private grouping: Group = {ungrouped: null};
   constructor(private mahasiswaApi: MahasiswaApiService, private route: Router) {}
 
   ngOnInit() {
@@ -22,16 +20,6 @@ export class MahasiswaListComponent implements OnInit {
       result => {
         this.mahasiswa = result;
         console.log(result);
-        let mahajs = localStorage.getItem("MahaJSON");
-        let groupjs = localStorage.getItem("GroupJSON")
-        if(mahajs === "null" && groupjs === "null"){
-          console.log("this.worked!");
-          this.grouping.ungrouped = this.mahasiswa.result.mahasiswa;
-          console.log(this.grouping);
-          let mahaJSON = JSON.stringify(this.grouping);
-          console.log(mahaJSON);
-          localStorage.setItem("MahaJSON",mahaJSON);
-        }
       },
       error => {
         console.log(error);

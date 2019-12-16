@@ -14,11 +14,9 @@ export class MahasiswaApiService {
 
   public currentToken: BehaviorSubject<any>;
   public token: Observable<string>;
-  public authToken = {token: null};
-
+  private authTkn: authTkn;
   private mahasiswaUrl = 'https://umn-pti2019.herokuapp.com/api/mahasiswa/';
   private baseUrl = 'https://umn-pti2019.herokuapp.com/api/';
-
   constructor(private http: HttpClient) {
    this.currentToken = new BehaviorSubject<any>("null");
    }
@@ -66,8 +64,8 @@ export class MahasiswaApiService {
     return this.http.put<authTkn>(this.baseUrl + 'update', model);
   }
   postUserVerify(): Observable<uData> {
-    this.authToken.token = localStorage.getItem('token');
-    return this.http.post<uData>(this.baseUrl + 'verify', this.authToken);
+    this.authTkn.token = localStorage.getItem('token');
+    return this.http.post<uData>(this.baseUrl + 'verify', this.authTkn);
   }
 
   postMahaUpdate(model: any, nim: string): Observable<any> {

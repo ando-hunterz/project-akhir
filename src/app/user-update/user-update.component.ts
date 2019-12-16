@@ -44,6 +44,7 @@ export class UserUpdateComponent implements OnInit {
         this.route.navigate(['/login']);
         }
     );
+
   }
 
   preFilled() {

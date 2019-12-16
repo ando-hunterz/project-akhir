@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router} from "@angular/router";
 import { FormBuilder } from '@angular/forms';
 import { MahasiswaDetail } from 'src/app/shared/model/mahasiswa';
 import { authTkn } from 'src/app/shared/model/loginDetails';
@@ -23,6 +23,8 @@ export class MahasiswaDetailComponent implements OnInit {
     alamat: [''],
     tanggal_lahir: [''],
     foto: [''],
+    email: [''],
+    nim: [''],
     prodi: [''],
     telepon: [''],
     token: localStorage.getItem('token')
@@ -32,7 +34,7 @@ export class MahasiswaDetailComponent implements OnInit {
     private mahasiswaApi: MahasiswaApiService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -64,6 +66,7 @@ export class MahasiswaDetailComponent implements OnInit {
         this.router.navigate(['/login']);
         }
     );
+
   }
 
   updateVal(){
@@ -78,8 +81,10 @@ export class MahasiswaDetailComponent implements OnInit {
     console.log(this.mahasiswaDetail);
     this.updateMahaForm.controls.nama_lengkap.setValue(this.mahasiswaDetail.result.nama_lengkap);
     this.updateMahaForm.controls.angkatan.patchValue(this.mahasiswaDetail.result.angkatan);
+    this.updateMahaForm.controls.email.patchValue(this.mahasiswaDetail.result.email);
     this.updateMahaForm.controls.alamat.patchValue(this.mahasiswaDetail.result.alamat);
     this.updateMahaForm.controls.foto.patchValue(this.mahasiswaDetail.result.foto);
+    this.updateMahaForm.controls.nim.patchValue(this.mahasiswaDetail.result.nim);
     this.updateMahaForm.controls.prodi.patchValue(this.mahasiswaDetail.result.prodi);
     this.updateMahaForm.controls.tanggal_lahir.patchValue(this.mahasiswaDetail.result.tanggal_lahir);
     this.updateMahaForm.controls.telepon.patchValue(this.mahasiswaDetail.result.telepon);
@@ -88,20 +93,12 @@ export class MahasiswaDetailComponent implements OnInit {
 
   onSubmit(){
     console.log(this.updateMahaForm.value);
-    this.mahasiswaApi.postMahaUpdate(this.updateMahaForm.value, this.nim).subscribe(
+    /*this.mahasiswaApi.postMahaUpdate(this.updateMahaForm.value, this.nim).subscribe(
       res => {console.log(res);
               this.authTkn = res;
-              alert(this.authTkn.info);
-              this.mahasiswaApi.getMahasiswaDetail(this.nim).subscribe(
-                result => {
-                  this.mahasiswaDetail = result;
-                },
-              );
-              },
+              alert(this.authTkn.info)},
       err => {console.log(err);}
     );
-
-
-
+    */
   }
 }

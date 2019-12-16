@@ -1,3 +1,4 @@
+import { AboutUSComponent } from './about-us/about-us.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'add', component: AddMahasiswaComponent, data: {animation: 'add'}},
   { path: 'group', component: GroupComponent, data: {animation: 'group'}},
   { path: 'register', component: RegisterComponent,  data: {animation: 'regist'}},
+  { path: 'about-us', component: AboutUSComponent }
 ];
 
 @NgModule({
