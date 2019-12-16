@@ -21,6 +21,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AddMahasiswaComponent } from './mahasiswa/add-mahasiswa/add-mahasiswa.component';
 import { SearchMahasiswaComponent } from './mahasiswa/search-mahasiswa/search-mahasiswa.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { SearchFilterPipe } from './shared/search-filter.pipe';
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
@@ -41,6 +42,7 @@ export function tokenGetter() {
     AddMahasiswaComponent,
     SearchMahasiswaComponent,
     AboutUsComponent,
+    SearchFilterPipe,
   ],
   imports: [
     FormsModule,

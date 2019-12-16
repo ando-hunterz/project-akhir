@@ -16,6 +16,18 @@ export interface xToken {
   token: string;
 }
 
+export interface user{
+  info: string;
+  result: {
+    alamat: string;
+    email: string;
+    foto: string;
+    tanggal_lahir: string;
+    telepon: string;
+    nama_lengkap: string;
+  }
+}
+
 export interface uData {
   info: string;
   result: {
