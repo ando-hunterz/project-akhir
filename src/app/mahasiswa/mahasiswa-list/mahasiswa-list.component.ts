@@ -7,7 +7,7 @@ import { MahasiswaApiService } from 'src/app/shared/services/mahasiswa-api.servi
 @Component({
   selector: "app-mahasiswa-list",
   templateUrl: "./mahasiswa-list.component.html",
-  styleUrls: ["./mahasiswa-list.component.scss"],
+  styleUrls: ['./mahasiswa-list.component.scss'],
 })
 export class MahasiswaListComponent implements OnInit {
   public mahasiswa: Mahasiswa = null;
