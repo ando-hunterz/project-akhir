@@ -1,4 +1,4 @@
-
+import { AboutUSComponent } from './about-us/about-us.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'homepage/:nim', component: MahasiswaDetailComponent},
   { path: 'homepage', component: MahasiswaListComponent},
   { path: 'update', component: UserUpdateComponent},
+  { path: 'about-us', component: AboutUSComponent }
 ];
 
 @NgModule({
