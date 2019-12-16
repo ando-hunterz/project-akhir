@@ -27,12 +27,20 @@ export class MahasiswaApiService {
     return this.http.get<Mahasiswa>(this.mahasiswaUrl);
   }
 
-  getAllMahasiswaDataSortByIdDesc(): Observable<Mahasiswa> {
-    return this.http.get<Mahasiswa>(this.mahasiswaUrl + '?sort=id&order=desc');
+  getAllMahasiswaDataSortByNimDesc(): Observable<Mahasiswa> {
+    return this.http.get<Mahasiswa>(this.mahasiswaUrl + '?sort=nim&order=desc');
   }
 
-  getAllMahasiswaDataSortByIdAsc(): Observable<Mahasiswa> {
-    return this.http.get<Mahasiswa>(this.mahasiswaUrl + '?sort=id&order=asc');
+  getAllMahasiswaDataSortByNimAsc(): Observable<Mahasiswa> {
+    return this.http.get<Mahasiswa>(this.mahasiswaUrl + '?sort=nim&order=asc');
+  }
+
+  getAllMahasiswaDataSortByNameAsc(): Observable<Mahasiswa> {
+    return this.http.get<Mahasiswa>(this.mahasiswaUrl + '?sort=nama_lengkap&order=asc');
+  }
+
+  getAllMahasiswaDataSortByNameDesc(): Observable<Mahasiswa> {
+    return this.http.get<Mahasiswa>(this.mahasiswaUrl + '?sort=nama_lengkap&order=desc');
   }
 
   addMahasiswa(modal: any): Observable<MahasiswaDetail>{
@@ -59,7 +67,6 @@ export class MahasiswaApiService {
   }
   postUserVerify(): Observable<uData> {
     this.authToken.token = localStorage.getItem('token');
-    this.getCurrentToken();
     return this.http.post<uData>(this.baseUrl + 'verify', this.authToken);
   }
 

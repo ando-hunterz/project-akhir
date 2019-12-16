@@ -2,23 +2,23 @@
   <div class="row">
     <div class="col-lg">
       <div class="card animated slideInUp">
-        <img src="{{uData.result.user.foto}}" class="card-img-top h-50" alt="No Valid Link">
+        <img src="{{uData.result.foto}}" class="card-img-top h-50" alt="No Valid Link">
       </div>
   </div>
   <div class="col">
     <div class="card">
       <div class="card-body text-center">
           <h1 class="card-title text-left">
-            {{ uData.result.user.user_name }}
+            {{ uData.result.user_name }}
           </h1>
           <h4 class="card-text text-left text-muted">
-              <i class="fas fa-at"></i> {{ uData.result.user.email }}
+              <i class="fas fa-at"></i> {{ uData.result.email }}
             </h4>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{ uData.result.user.nama_lengkap }}</li>
-            <li class="list-group-item">{{ uData.result.user.tanggal_lahir }}</li>
-            <li class="list-group-item">{{ uData.result.user.telepon }}</li>
+            <li class="list-group-item">{{ uData.result.nama_lengkap }}</li>
+            <li class="list-group-item">{{ uData.result.tanggal_lahir }}</li>
+            <li class="list-group-item">{{ uData.result.telepon }}</li>
         </ul>
         <div class="card-footer">
           <button class="btn btn-outline-secondary" routerLink="/update">Update Profile</button>

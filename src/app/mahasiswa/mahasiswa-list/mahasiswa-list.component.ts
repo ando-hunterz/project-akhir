@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { Mahasiswa } from "../shared/model/mahasiswa";
-import { MahasiswaApiService } from "../shared/services/mahasiswa-api.service";
-import { trigger, transition, animate, style, state } from "@angular/animations";
 import { Router } from '@angular/router';
 import { Group } from '../group/group.component';
+import { Mahasiswa } from 'src/app/shared/model/mahasiswa';
+import { MahasiswaApiService } from 'src/app/shared/services/mahasiswa-api.service';
 
 @Component({
   selector: "app-mahasiswa-list",
@@ -38,17 +37,23 @@ export class MahasiswaListComponent implements OnInit {
         console.log(error);
       }
     );
+    this.mahasiswaApi.viewUser().subscribe(
+      res => {console.log(res);},
+      err => {console.log(err);}
+    );
     this.mahasiswaApi.postUserVerify().subscribe(
       res => { console.log(res);
               },
       err => {
-        console.log(err);this.route.navigate(['/login']);
-      localStorage.removeItem('token'); }
+        localStorage.removeItem('token');
+        this.mahasiswaApi.getCurrentToken();
+        this.route.navigate(['/login']);
+        }
     );
   }
 
-  mahaSortIdDesc() {
-    this.mahasiswaApi.getAllMahasiswaDataSortByIdDesc().subscribe(
+  mahaSortNimDesc() {
+    this.mahasiswaApi.getAllMahasiswaDataSortByNimDesc().subscribe(
       result => {
         this.mahasiswa = result;
         console.log(result);
@@ -58,8 +63,31 @@ export class MahasiswaListComponent implements OnInit {
       }
     );
   }
-  mahaSortIdAsc() {
-    this.mahasiswaApi.getAllMahasiswaDataSortByIdAsc().subscribe(
+  mahaSortNimAsc() {
+    this.mahasiswaApi.getAllMahasiswaDataSortByNimAsc().subscribe(
+      result => {
+        this.mahasiswa = result;
+        console.log(result);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  mahaSortNameAsc(){
+    this.mahasiswaApi.getAllMahasiswaDataSortByNameAsc().subscribe(
+      result => {
+        this.mahasiswa = result;
+        console.log(result);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+  mahaSortNameDesc(){
+    this.mahasiswaApi.getAllMahasiswaDataSortByNameDesc().subscribe(
       result => {
         this.mahasiswa = result;
         console.log(result);

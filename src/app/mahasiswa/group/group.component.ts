@@ -1,7 +1,8 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, NavigationStart, Event, NavigationEnd } from '@angular/router';
-import { MahasiswaApiService } from '../shared/services/mahasiswa-api.service';
+import { MahasiswaApiService } from 'src/app/shared/services/mahasiswa-api.service';
+
 
 export interface Group {
   ungrouped: Array<any>;
@@ -37,9 +38,18 @@ export class GroupComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.mahasiswaApi.postUserVerify().subscribe(
+    this.mahasiswaApi.viewUser().subscribe(
       res => {console.log(res);},
-      err => {this.router.navigate(['/login']);}
+      err => {console.log(err);}
+    );
+    this.mahasiswaApi.postUserVerify().subscribe(
+      res => { console.log(res);
+              },
+      err => {
+        localStorage.removeItem('token');
+        this.mahasiswaApi.getCurrentToken();
+        this.router.navigate(['/login']);
+        }
     );
     this.daftar =  localStorage.getItem("MahaJSON");
     let groupjs = localStorage.getItem("GroupJSON");

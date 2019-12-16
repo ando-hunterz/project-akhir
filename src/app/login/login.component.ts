@@ -67,6 +67,7 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls.user_name;
   }
   ngOnInit() {
+    localStorage.removeItem('user_name');
   }
 
   showPass() {

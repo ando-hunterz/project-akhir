@@ -12,21 +12,25 @@ export class UserProfileComponent implements OnInit {
 
   public xtoken = {token: localStorage.getItem("token")};
 
-  public uData: uData = null;
+  public uData: uData;
   authTkn: authTkn = null;
   constructor(private mahasiswaApi: MahasiswaApiService,private route: Router) { }
 
   ngOnInit() {
     this.mahasiswaApi.viewUser().subscribe(
-      res => {console.log(res);},
+      res => {console.log(res);
+              this.uData = res;
+             console.log(this.uData);},
       err => {console.log(err);}
     );
     this.mahasiswaApi.postUserVerify().subscribe(
       res => { console.log(res);
               },
       err => {
+        localStorage.removeItem('token');
+        this.mahasiswaApi.getCurrentToken();
         this.route.navigate(['/login']);
-      localStorage.removeItem('token'); }
+        }
     );
   }
 

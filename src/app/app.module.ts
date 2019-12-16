@@ -7,8 +7,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './shared/component/header/header.component';
 import { FooterComponent } from './shared/component/footer/footer.component';
-import { MahasiswaListComponent } from './mahasiswa-list/mahasiswa-list.component';
-import { MahasiswaDetailComponent } from './mahasiswa-detail/mahasiswa-detail.component';
+import { MahasiswaListComponent } from './mahasiswa/mahasiswa-list/mahasiswa-list.component';
+import { MahasiswaDetailComponent } from './mahasiswa/mahasiswa-detail/mahasiswa-detail.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
@@ -16,9 +16,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { UserUpdateComponent } from './user-update/user-update.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { GroupComponent } from './group/group.component';
+import { GroupComponent } from './mahasiswa/group/group.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { AddMahasiswaComponent } from './add-mahasiswa/add-mahasiswa.component';
+import { AddMahasiswaComponent } from './mahasiswa/add-mahasiswa/add-mahasiswa.component';
+import { SearchMahasiswaComponent } from './mahasiswa/search-mahasiswa/search-mahasiswa.component';
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
@@ -37,6 +38,7 @@ export function tokenGetter() {
     GroupComponent,
     UserProfileComponent,
     AddMahasiswaComponent,
+    SearchMahasiswaComponent,
   ],
   imports: [
     FormsModule,

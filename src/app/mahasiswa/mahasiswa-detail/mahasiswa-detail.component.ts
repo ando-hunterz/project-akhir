@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { MahasiswaApiService } from "../shared/services/mahasiswa-api.service";
-import { MahasiswaDetail } from "../shared/model/mahasiswa";
 import { ActivatedRoute, Router } from "@angular/router";
 import { FormBuilder } from '@angular/forms';
-import { authTkn } from '../shared/model/loginDetails';
-import * as $ from 'jquery/dist/jquery.min.js';
+import { MahasiswaDetail } from 'src/app/shared/model/mahasiswa';
+import { authTkn } from 'src/app/shared/model/loginDetails';
+import { MahasiswaApiService } from 'src/app/shared/services/mahasiswa-api.service';
+
 
 @Component({
   selector: "app-mahasiswa-detail",
@@ -12,7 +12,7 @@ import * as $ from 'jquery/dist/jquery.min.js';
   styleUrls: ["./mahasiswa-detail.component.scss"]
 })
 export class MahasiswaDetailComponent implements OnInit {
-  public mahasiswaDetail: MahasiswaDetail = null;
+  public mahasiswaDetail: MahasiswaDetail;
   public mahaUpdate: boolean = null;
   public nim: string;
   private authTkn: authTkn = null;
@@ -51,11 +51,18 @@ export class MahasiswaDetailComponent implements OnInit {
         console.log(error);
       }
      );
+     this.mahasiswaApi.viewUser().subscribe(
+      res => {console.log(res);},
+      err => {console.log(err);}
+    );
      this.mahasiswaApi.postUserVerify().subscribe(
       res => { console.log(res);
               },
-      err => {this.router.navigate(['/login']);
-      localStorage.removeItem('token'); }
+      err => {
+        localStorage.removeItem('token');
+        this.mahasiswaApi.getCurrentToken();
+        this.router.navigate(['/login']);
+        }
     );
   }
 

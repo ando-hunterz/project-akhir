@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MahasiswaApiService } from '../shared/services/mahasiswa-api.service';
-import { MahasiswaDetail } from '../shared/model/mahasiswa';
+import { MahasiswaDetail } from '../../shared/model/mahasiswa';
 import { Validators, FormBuilder } from '@angular/forms';
+import { MahasiswaApiService } from 'src/app/shared/services/mahasiswa-api.service';
 
 @Component({
   selector: 'app-add-mahasiswa',
