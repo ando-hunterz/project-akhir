@@ -12,11 +12,7 @@ export class UserProfileComponent implements OnInit {
 
   public xtoken = {token: localStorage.getItem("token")};
 
-<<<<<<< HEAD
-  public uData: uData;
-=======
   public uData: user;
->>>>>>> 2bb816d9cdee51d699a8a0790470f84fee99ceda
   authTkn: authTkn = null;
   constructor(private mahasiswaApi: MahasiswaApiService,private route: Router) { }
 
@@ -24,7 +20,7 @@ export class UserProfileComponent implements OnInit {
     this.mahasiswaApi.viewUser().subscribe(
       res => {console.log(res);
               this.uData = res;
-             console.log(this.uData);},
+            },
       err => {console.log(err);}
     );
     this.mahasiswaApi.postUserVerify().subscribe(

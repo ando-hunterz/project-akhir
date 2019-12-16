@@ -6,13 +6,8 @@
   >
     <form [formGroup]="groupform" (submit)="onSubmit()">
       <div class="form-group">
-<<<<<<< HEAD
         <h3 class="text-center "> Grouping Page </h3>
         <label for="mahasiswa"> Nama Mahasiswa </label>
-=======
-        <h1 class="text-center ">Grouping Page</h1>
-        <label for="mahasiswa">Nama Mahasiswa</label>
->>>>>>> 2bb816d9cdee51d699a8a0790470f84fee99ceda
         <select
           formControlName="index"
           class="form-control"
@@ -22,7 +17,7 @@
           <option
             *ngFor="let maha of grouping.ungrouped; let i = index;trackBy: trackByFn"
             [value]="i"
-            >{{maha.nama_lengkap}}</option
+            >{{maha.nama_lengkap}}{{i}}</option
           >
         </select>
         <label for="group">Group</label>
@@ -33,25 +28,19 @@
           placeholder="Group"
           name="group"
         />
-<<<<<<< HEAD
         <div class="card">
-=======
->>>>>>> 2bb816d9cdee51d699a8a0790470f84fee99ceda
         <button type="submit" class="btn pull-right btn-outline-primary">
           Submit
         </button>
       </div>
-<<<<<<< HEAD
       </div>
-=======
->>>>>>> 2bb816d9cdee51d699a8a0790470f84fee99ceda
     </form>
   </div>
 
   <div class="data">
     <div class="row">
       <div *ngFor="let nama of groupProperty">
-        <div class="card" *ngIf="grouping[nama] != undefined">
+        <div class="card animated slideInUp" *ngIf="grouping[nama] != undefined">
         <div class="card-header">
           <h5>
             Grup: <strong>{{ nama }}</strong>
@@ -60,11 +49,7 @@
         <div class="card-body">
           <p *ngFor="let member of grouping[nama], let i = index">
             {{ member.nama_lengkap }}
-<<<<<<< HEAD
-            <button class="btn btn-secondary"   (click)="deleteMahasiswaGroup(nama, i, member.nama_lengkap)">Delete</button>
-=======
-            <button class="btn btn-secondary"   (click)="deleteMahasiswaGroup(nama, i)">Delete</button>
->>>>>>> 2bb816d9cdee51d699a8a0790470f84fee99ceda
+            <button class="btn btn-secondary" (click)="deleteMahasiswaGroup(nama, i)">Delete</button>
           </p>
         </div>
         </div>

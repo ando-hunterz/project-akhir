@@ -3,7 +3,7 @@
   <a class="back pull-left " [@inAndOut] *ngIf="route.url != '/homepage' && route.url != '/'" (click)="cancel()"><i class="fas fa-2x fa-arrow-left"></i></a>
 </div>
   <div class="col-5" >
-    <a class="title">Mahasiswa App
+    <a class="title" (click)="title()">Mahasiswa App
       </a>
     </div>
   <div class="col-3" *ngIf="logStat == false && route.url != '/login'" >

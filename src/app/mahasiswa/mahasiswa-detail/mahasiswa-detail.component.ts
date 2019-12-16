@@ -43,7 +43,6 @@ export class MahasiswaDetailComponent implements OnInit {
      this.mahasiswaApi.getMahasiswaDetail(this.nim).subscribe(
       result => {
         this.mahasiswaDetail = result;
-        console.log(result);
         console.log(this.mahasiswaDetail);
         this.preFilled();
       },

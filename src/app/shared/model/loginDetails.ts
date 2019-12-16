@@ -25,10 +25,7 @@ export interface user{
     tanggal_lahir: string;
     telepon: string;
     nama_lengkap: string;
-<<<<<<< HEAD
-=======
     user_name: string;
->>>>>>> 2bb816d9cdee51d699a8a0790470f84fee99ceda
   }
 }
 

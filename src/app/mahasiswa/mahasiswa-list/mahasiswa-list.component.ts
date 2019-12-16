@@ -7,11 +7,7 @@ import { MahasiswaApiService } from 'src/app/shared/services/mahasiswa-api.servi
 @Component({
   selector: "app-mahasiswa-list",
   templateUrl: "./mahasiswa-list.component.html",
-<<<<<<< HEAD
   styleUrls: ["./mahasiswa-list.component.scss"],
-=======
-  styleUrls: ['./mahasiswa-list.component.scss'],
->>>>>>> 2bb816d9cdee51d699a8a0790470f84fee99ceda
 })
 export class MahasiswaListComponent implements OnInit {
   public mahasiswa: Mahasiswa = null;
@@ -29,11 +25,11 @@ export class MahasiswaListComponent implements OnInit {
         let mahajs = localStorage.getItem("MahaJSON");
         let groupjs = localStorage.getItem("GroupJSON")
         if(mahajs === "null" && groupjs === "null"){
-          console.log("this.worked!");
+
           this.grouping.ungrouped = this.mahasiswa.result.mahasiswa;
-          console.log(this.grouping);
+
           let mahaJSON = JSON.stringify(this.grouping);
-          console.log(mahaJSON);
+
           localStorage.setItem("MahaJSON",mahaJSON);
         }
       },
